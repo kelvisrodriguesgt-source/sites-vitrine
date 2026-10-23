@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bragaefranco.vercel.app/sitemap.xml
+Sitemap: https://braga-e-franco.vercel.app/sitemap.xml

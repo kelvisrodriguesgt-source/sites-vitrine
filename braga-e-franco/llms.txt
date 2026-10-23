@@ -6,7 +6,7 @@
 - Instagram: https://www.instagram.com/bragaefrancoadvogados
 - Cidade: Pontes e Lacerda - MT
 - Horário: segunda a sexta, 07:30 às 11:00 e 13:00 às 17:00
-- Site: https://bragaefranco.vercel.app/
+- Site: https://braga-e-franco.vercel.app/
 
 ## Áreas de atuação
 - Direito Civil
