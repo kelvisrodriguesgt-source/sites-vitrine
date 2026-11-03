@@ -15,5 +15,8 @@
 - Gestão de tráfego: campanhas no Meta Ads e no Google Ads.
 - Implementação e automação de IA: inteligência artificial e automações na rotina da empresa para organizar processos e atender melhor.
 
+## Privacidade
+- Política de Privacidade (LGPD): https://grupo-kr.vercel.app/privacidade
+
 ## Sobre
 O Grupo KR atende negócios de qualquer cidade do Brasil. O primeiro contato é feito pelo WhatsApp.

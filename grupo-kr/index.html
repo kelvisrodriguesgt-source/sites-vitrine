@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0A0A0A">
 <!-- Versão final: <meta name="google-site-verification" content="CODIGO_SEARCH_CONSOLE"> -->
-<!-- Quando houver IDs: Meta Pixel e GA4 entram aqui (com aviso de cookies/LGPD). Os links de WhatsApp têm data-cta para medir cliques. -->
+<!-- Pixel/GA4: NÃO colocar código aqui. Preencher TRACKING no topo de /app.js; o carregamento só acontece depois do consentimento. Os links de WhatsApp têm data-cta para medir cliques. -->
 
 <script type="application/ld+json">
 {
@@ -55,159 +55,31 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Como começa o atendimento?", "acceptedAnswer": { "@type": "Answer", "text": "Você chama no WhatsApp e conta sobre o seu negócio. Na conversa, entendemos o momento da empresa e indicamos por onde faz sentido começar." } },
+    { "@type": "Question", "name": "Vocês atendem fora da sua cidade?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O Grupo KR atende negócios em todo o Brasil, com o contato feito pelo WhatsApp." } },
+    { "@type": "Question", "name": "Preciso ter uma presença digital pronta?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Se o seu negócio está começando no digital, a conversa inicial serve para entender o que já existe e o que falta." } },
+    { "@type": "Question", "name": "O que acontece com os meus dados?", "acceptedAnswer": { "@type": "Answer", "text": "Usamos as informações que você enviar apenas para responder ao seu contato e entender o seu negócio. Os detalhes estão na Política de Privacidade." } }
+  ]
+}
+</script>
+
 <link rel="preload" href="/fonts/oxanium-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face { font-family: 'Oxanium'; font-weight: 600; font-style: normal; font-display: swap; src: url('/fonts/oxanium-latin-600-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Oxanium'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/oxanium-latin-700-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/inter-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/inter-latin-500-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/fonts/inter-latin-600-normal.woff2') format('woff2'); }
-
-:root {
-  --ink: #0A0A0A; --ink-2: #2B2B2B; --gray: #9B9B9B; --gold: #C8A96A; --white: #FFFFFF;
-  --muted: #5A5A5A; --surface: #F5F5F3; --line: #E3E3E0;
-  --head: 'Oxanium', 'Segoe UI', system-ui, sans-serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --cut: 14px;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-h1, h2, h3 { font-family: var(--head); font-weight: 700; text-transform: uppercase; margin: 0; line-height: 1.08; letter-spacing: .01em; }
-p { margin: 0; }
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-.eyebrow { font-family: var(--head); font-weight: 600; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-.eyebrow::before { content: ""; width: 44px; height: 3px; background: var(--gold); flex: none; }
-
-/* botão com cantos cortados, como no kit */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--head); font-weight: 700; font-size: 16px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; padding: 17px 30px; min-height: 54px; border: 0; cursor: pointer;
-  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); transition: transform .15s, background .2s, color .2s; }
-.btn:hover { transform: translateY(-2px); }
-.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.btn-gold { background: var(--gold); color: var(--ink); }
-.btn-gold:hover { background: #D6B979; }
-.btn-ink { background: var(--ink); color: var(--white); }
-.btn-ink:hover { background: var(--ink-2); }
-.btn-line { background: var(--ink); color: var(--white); position: relative; }
-.btn-ghost { background: var(--surface); color: var(--ink); }
-.btn-ghost:hover { background: #ECECE8; }
-.btn svg { width: 20px; height: 20px; flex: none; }
-.dark .btn:focus-visible { outline-color: var(--white); }
-
-header.top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
-.top .brand img { height: 22px; width: auto; }
-.top nav { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
-.top nav a { text-decoration: none; color: var(--muted); transition: color .2s; }
-.top nav a:hover { color: var(--ink); }
-.top .btn { padding: 11px 22px; min-height: 44px; font-size: 14px; --cut: 10px; }
-
-/* HERO */
-.hero { position: relative; overflow: hidden; }
-.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 60px 60px; opacity: .55; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 30% 30%, #000 20%, transparent 78%); mask-image: radial-gradient(ellipse 80% 70% at 30% 30%, #000 20%, transparent 78%); }
-.hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; padding-top: 88px; padding-bottom: 104px; }
-.hero h1 { font-size: clamp(34px, 4.5vw, 54px); margin-bottom: 24px; }
-.hero h1 .mark { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: .09em; text-underline-offset: .14em; }
-.hero .lead { font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: 34px; }
-.cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero .proof { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
-.hero .proof b { display: block; font-family: var(--head); font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin-bottom: 2px; }
-
-/* cartão de conversa */
-.chat { position: relative; background: var(--ink); color: var(--white); padding: 30px; clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); }
-.chat::after { content: "KR"; position: absolute; right: -8px; bottom: -34px; font-family: var(--head); font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,.045); pointer-events: none; }
-.chat .hd { display: flex; align-items: center; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid #262626; margin-bottom: 22px; }
-.chat .av { width: 46px; height: 46px; background: #161616; border: 1px solid #333; display: grid; place-items: center; }
-.chat .av img { width: 26px; }
-.chat .hd b { display: block; font-family: var(--head); font-size: 17px; letter-spacing: .06em; text-transform: uppercase; }
-.chat .hd small { color: var(--gray); font-size: 13px; }
-.chat .label { font-family: var(--head); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.bubble { background: var(--ink-2); padding: 16px 18px; font-size: 16px; line-height: 1.55; max-width: 92%; margin-left: auto; border-radius: 14px 14px 2px 14px; }
-.chat .btn { width: 100%; margin-top: 24px; }
-.chat .note { color: var(--gray); font-size: 13px; margin-top: 14px; text-align: center; }
-
-section { padding: 104px 0; }
-.sec-title { font-size: clamp(30px, 4vw, 46px); max-width: 720px; margin-bottom: 16px; }
-.sec-sub { color: var(--muted); font-size: 17px; max-width: 580px; margin-bottom: 56px; }
-
-/* SERVIÇOS */
-.services { background: var(--surface); }
-.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-.grid .card { grid-column: span 2; }
-.grid .card:nth-child(n+4) { grid-column: span 3; }
-.card { background: var(--white); padding: 34px 30px 30px; position: relative; display: flex; flex-direction: column; border-top: 3px solid var(--ink); transition: transform .2s, box-shadow .2s; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
-.card:hover { transform: translateY(-4px); }
-.card .num { font-family: var(--head); font-weight: 700; font-size: 15px; letter-spacing: .2em; color: var(--gold); margin-bottom: 40px; }
-.card h3 { font-size: 24px; margin-bottom: 12px; }
-.card p { color: var(--muted); font-size: 16px; margin-bottom: 28px; flex: 1; }
-.card a.more { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; padding-bottom: 4px; border-bottom: 2px solid var(--gold); align-self: flex-start; }
-.card a.more:hover { gap: 14px; }
-
-/* CTA FINAL */
-.final { background: var(--ink); color: var(--white); text-align: center; padding: 120px 0 112px; position: relative; overflow: hidden; }
-.final::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(#171717 1px, transparent 1px), linear-gradient(90deg, #171717 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 10%, transparent 75%); mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 10%, transparent 75%); }
-.final .corner { position: absolute; width: 56px; height: 56px; border: 0 solid #555; }
-.final .c1 { top: 36px; left: 36px; border-top-width: 3px; border-left-width: 3px; }
-.final .c2 { top: 36px; right: 36px; border-top-width: 3px; border-right-width: 3px; }
-.final .c3 { bottom: 36px; left: 36px; border-bottom-width: 3px; border-left-width: 3px; }
-.final .c4 { bottom: 36px; right: 36px; border-bottom-width: 3px; border-right-width: 3px; }
-.final .wrap { position: relative; }
-.final h2 { font-size: clamp(32px, 5vw, 58px); max-width: 820px; margin: 0 auto 36px; }
-.final .btn { font-size: 18px; padding: 20px 40px; min-height: 62px; }
-.final .tel { display: block; margin-top: 30px; font-family: var(--head); font-weight: 700; font-size: 26px; letter-spacing: .04em; color: var(--gold); text-decoration: none; }
-.final .ig { display: inline-block; margin-top: 10px; font-family: var(--head); font-weight: 600; font-size: 14px; letter-spacing: .32em; text-transform: uppercase; color: var(--gray); text-decoration: none; }
-.final .ig:hover { color: var(--white); }
-
-footer { background: var(--ink); color: var(--gray); border-top: 1px solid #222; padding: 36px 0; font-size: 14px; }
-footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-footer img { height: 38px; width: auto; }
-footer .fl { display: flex; gap: 26px; flex-wrap: wrap; }
-footer a { text-decoration: none; color: #CFCFCF; }
-footer a:hover { color: var(--white); }
-
-/* barra fixa no celular */
-.sticky { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
-.sticky .btn { width: 100%; }
-
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-.no-js .reveal { opacity: 1; transform: none; }
-
-@media (max-width: 920px) {
-  .top nav { display: none; }
-  .hero .wrap { grid-template-columns: 1fr; gap: 44px; padding-top: 48px; padding-bottom: 64px; }
-  section { padding: 72px 0; }
-  .grid { grid-template-columns: 1fr; }
-  .grid .card, .grid .card:nth-child(n+4) { grid-column: auto; }
-  .final { padding: 88px 0 84px; }
-  .final .corner { width: 36px; height: 36px; }
-  .final .c1, .final .c2 { top: 18px; } .final .c3, .final .c4 { bottom: 18px; }
-  .final .c1, .final .c3 { left: 18px; } .final .c2, .final .c4 { right: 18px; }
-  .sticky { display: block; }
-  footer { padding-bottom: 100px; }
-  .top .btn { display: none; }
-}
-@media (max-width: 520px) {
-  .wrap { padding: 0 20px; }
-  .cta-row .btn { width: 100%; }
-  .chat { padding: 24px 20px; }
-  .hero .proof { gap: 20px; }
-  .final .btn { width: 100%; padding-left: 20px; padding-right: 20px; }
-  .final .tel { font-size: 22px; }
-}
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .card { transition: none; } }
-</style>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js"></script>
 </head>
-<body class="no-js">
-<script>document.body.classList.remove('no-js');</script>
+<body>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Grupo KR, início"><img src="/wordmark-preto.png" alt="Grupo KR" width="115" height="22"></a>
     <nav aria-label="Principal">
       <a href="#servicos">Serviços</a>
+      <a href="#perguntas">Perguntas</a>
       <a href="#contato">Contato</a>
     </nav>
     <a class="btn btn-gold" data-cta="header" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Grupo%20KR%20e%20quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">Chamar no WhatsApp</a>
@@ -215,7 +87,7 @@ footer a:hover { color: var(--white); }
 </header>
 
 <main>
-<section class="hero" style="padding:0">
+<section class="hero">
   <div class="wrap">
     <div>
       <span class="eyebrow">Assessoria de marketing · Todo o Brasil</span>
@@ -262,7 +134,24 @@ footer a:hover { color: var(--white); }
   </div>
 </section>
 
-<section id="contato" class="final dark" style="padding-bottom:112px">
+<section id="perguntas" class="faq">
+  <div class="wrap faq-wrap">
+    <div>
+      <span class="eyebrow">Perguntas</span>
+      <h2 class="sec-title reveal">Dúvidas comuns</h2>
+      <p class="sec-sub tight">Não achou a sua? Chame no WhatsApp.</p>
+      <a class="btn btn-ink" data-cta="faq" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20Grupo%20KR." target="_blank" rel="noopener">Tirar minha dúvida</a>
+    </div>
+    <div>
+      <details><summary>Como começa o atendimento?</summary><p>Você chama no WhatsApp e conta sobre o seu negócio. Na conversa, entendemos o momento da empresa e indicamos por onde faz sentido começar.</p></details>
+      <details><summary>Vocês atendem fora da sua cidade?</summary><p>Sim. O Grupo KR atende negócios em todo o Brasil, com o contato feito pelo WhatsApp.</p></details>
+      <details><summary>Preciso ter uma presença digital pronta?</summary><p>Não. Se o seu negócio está começando no digital, a conversa inicial serve para entender o que já existe e o que falta.</p></details>
+      <details><summary>O que acontece com os meus dados?</summary><p>Usamos as informações que você enviar apenas para responder ao seu contato e entender o seu negócio. Os detalhes estão na <a href="/privacidade">Política de Privacidade</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="final dark">
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="wrap">
     <h2 class="reveal">Vamos conversar sobre o seu negócio?</h2>
@@ -279,6 +168,8 @@ footer a:hover { color: var(--white); }
     <div class="fl">
       <a href="https://wa.me/5565999034981" target="_blank" rel="noopener">WhatsApp (65) 99903-4981</a>
       <a href="https://www.instagram.com/grupok.r/" target="_blank" rel="noopener">Instagram @grupok.r</a>
+      <a class="legal" href="/privacidade">Política de Privacidade</a>
+      <button type="button" class="linkbtn" data-open-consent hidden>Gerenciar cookies</button>
     </div>
     <span>© 2026 Grupo KR | Assessoria de Marketing · Atendimento em todo o Brasil</span>
   </div>
@@ -290,15 +181,5 @@ footer a:hover { color: var(--white); }
     Chamar no WhatsApp</a>
 </div>
 
-<script>
-(function () {
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: .12 });
-  els.forEach(function (e) { io.observe(e); });
-})();
-</script>
 </body>
 </html>
