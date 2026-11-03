@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Assessoria de Marketing para Negócios | Grupo KR</title>
-<meta name="description" content="Grupo KR: assessoria de marketing com gestão de redes sociais, tráfego pago (Meta Ads e Google Ads) e Google Meu Negócio. Atendimento em todo o Brasil.">
+<meta name="description" content="Grupo KR: Google Meu Negócio, gestão de redes sociais, criação de sites, gestão de tráfego e implementação de IA nas empresas. Atendimento em todo o Brasil.">
 
 <!-- noindex enquanto o endereço for provisório. Ao ligar o domínio próprio trocar por: index, follow -->
 <meta name="robots" content="noindex, nofollow">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Grupo KR | Assessoria de Marketing">
 <meta property="og:title" content="Grupo KR | Assessoria de Marketing">
-<meta property="og:description" content="Redes sociais, tráfego pago e Google Meu Negócio para o seu negócio ser encontrado e escolhido. Chame no WhatsApp.">
+<meta property="og:description" content="Google Meu Negócio, redes sociais, sites, tráfego e IA para o seu negócio ser encontrado e escolhido. Chame no WhatsApp.">
 <meta property="og:url" content="https://grupo-kr.vercel.app/">
 <meta property="og:image" content="https://grupo-kr.vercel.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -33,7 +33,7 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Grupo KR | Assessoria de Marketing",
-  "description": "Assessoria de marketing: gestão de redes sociais, gestão de tráfego (Meta Ads e Google Ads), Google Meu Negócio, marketing de atração, análise e relatórios e assessoria em marketing e vendas.",
+  "description": "Assessoria de marketing: Google Meu Negócio, gestão de redes sociais, criação de sites, gestão de tráfego (Meta Ads e Google Ads) e implementação de IA nas empresas.",
   "url": "https://grupo-kr.vercel.app/",
   "logo": "https://grupo-kr.vercel.app/logo.png",
   "image": "https://grupo-kr.vercel.app/og-image.jpg",
@@ -45,26 +45,13 @@
     "@type": "OfferCatalog",
     "name": "Serviços",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestão de redes sociais" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestão de tráfego (Meta Ads e Google Ads)" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Meu Negócio" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing de atração" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Análise e relatórios" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Assessoria em marketing e vendas" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestão de redes sociais" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Criação de sites" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestão de tráfego (Meta Ads e Google Ads)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Implementação de IA nas empresas" } }
     ]
   }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Como começa o atendimento?", "acceptedAnswer": { "@type": "Answer", "text": "Você chama no WhatsApp e conta sobre o seu negócio. Na conversa, entendemos o momento da empresa e indicamos por onde faz sentido começar." } },
-    { "@type": "Question", "name": "Vocês atendem fora da sua cidade?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O Grupo KR atende negócios em todo o Brasil, com o contato feito pelo WhatsApp." } },
-    { "@type": "Question", "name": "Preciso ter uma presença digital pronta?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Se o seu negócio ainda está começando no digital, a conversa inicial serve justamente para entender o que já existe e o que falta." } },
-    { "@type": "Question", "name": "Como falo com o Grupo KR?", "acceptedAnswer": { "@type": "Answer", "text": "Pelo WhatsApp (65) 99903-4981 ou pelo Instagram @grupok.r." } }
-  ]
 }
 </script>
 
@@ -147,7 +134,9 @@ section { padding: 104px 0; }
 
 /* SERVIÇOS */
 .services { background: var(--surface); }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+.grid .card { grid-column: span 2; }
+.grid .card:nth-child(n+4) { grid-column: span 3; }
 .card { background: var(--white); padding: 34px 30px 30px; position: relative; display: flex; flex-direction: column; border-top: 3px solid var(--ink); transition: transform .2s, box-shadow .2s; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
 .card:hover { transform: translateY(-4px); }
 .card .num { font-family: var(--head); font-weight: 700; font-size: 15px; letter-spacing: .2em; color: var(--gold); margin-bottom: 40px; }
@@ -155,36 +144,6 @@ section { padding: 104px 0; }
 .card p { color: var(--muted); font-size: 16px; margin-bottom: 28px; flex: 1; }
 .card a.more { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; padding-bottom: 4px; border-bottom: 2px solid var(--gold); align-self: flex-start; }
 .card a.more:hover { gap: 14px; }
-
-/* COMO FUNCIONA */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; counter-reset: s; border-top: 1px solid var(--ink); }
-.step { padding: 34px 32px 10px 0; position: relative; }
-.step + .step { padding-left: 32px; border-left: 1px solid var(--line); }
-.step .n { font-family: var(--head); font-weight: 700; font-size: 64px; line-height: 1; color: var(--gold); display: block; margin-bottom: 18px; }
-.step h3 { font-size: 22px; margin-bottom: 10px; }
-.step p { color: var(--muted); }
-
-/* DIFERENCIAIS */
-.why { background: var(--ink); color: var(--white); position: relative; overflow: hidden; }
-.why::after { content: ""; position: absolute; right: -60px; bottom: -80px; width: 520px; height: 380px; background: url('/kr-branco.png') no-repeat center/contain; opacity: .04; pointer-events: none; }
-.why .eyebrow { color: var(--gray); }
-.why .sec-sub { color: #B5B5B5; }
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; position: relative; z-index: 1; }
-.why-item { padding: 30px 0; border-top: 1px solid #2E2E2E; display: grid; grid-template-columns: 56px 1fr; gap: 6px 10px; }
-.why-item .n { font-family: var(--head); font-weight: 700; color: var(--gold); font-size: 18px; letter-spacing: .1em; padding-top: 3px; }
-.why-item h3 { font-size: 21px; margin-bottom: 8px; }
-.why-item p { color: #B5B5B5; grid-column: 2; }
-
-/* FAQ */
-.faq-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; }
-details { border-top: 1px solid var(--line); }
-details:last-child { border-bottom: 1px solid var(--line); }
-summary { list-style: none; cursor: pointer; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; font-family: var(--head); font-weight: 600; font-size: 19px; letter-spacing: .02em; text-transform: uppercase; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; font-size: 28px; line-height: 1; color: var(--gold); flex: none; transition: transform .2s; }
-details[open] summary::after { transform: rotate(45deg); }
-summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-details p { color: var(--muted); padding: 0 40px 26px 0; max-width: 620px; }
 
 /* CTA FINAL */
 .final { background: var(--ink); color: var(--white); text-align: center; padding: 120px 0 112px; position: relative; overflow: hidden; }
@@ -220,11 +179,8 @@ footer a:hover { color: var(--white); }
   .top nav { display: none; }
   .hero .wrap { grid-template-columns: 1fr; gap: 44px; padding-top: 48px; padding-bottom: 64px; }
   section { padding: 72px 0; }
-  .grid, .steps, .why-grid, .faq-wrap { grid-template-columns: 1fr; }
-  .faq-wrap { gap: 28px; }
-  .steps { border-top: 0; }
-  .step, .step + .step { padding: 28px 0; border-left: 0; border-top: 1px solid var(--ink); }
-  .step + .step { border-top-color: var(--line); }
+  .grid { grid-template-columns: 1fr; }
+  .grid .card, .grid .card:nth-child(n+4) { grid-column: auto; }
   .final { padding: 88px 0 84px; }
   .final .corner { width: 36px; height: 36px; }
   .final .c1, .final .c2 { top: 18px; } .final .c3, .final .c4 { bottom: 18px; }
@@ -252,9 +208,7 @@ footer a:hover { color: var(--white); }
     <a class="brand" href="#" aria-label="Grupo KR, início"><img src="/wordmark-preto.png" alt="Grupo KR" width="115" height="22"></a>
     <nav aria-label="Principal">
       <a href="#servicos">Serviços</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#perguntas">Perguntas</a>
+      <a href="#contato">Contato</a>
     </nav>
     <a class="btn btn-gold" data-cta="header" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Grupo%20KR%20e%20quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">Chamar no WhatsApp</a>
   </div>
@@ -266,7 +220,7 @@ footer a:hover { color: var(--white); }
     <div>
       <span class="eyebrow">Assessoria de marketing · Todo o Brasil</span>
       <h1>Assessoria de marketing para o seu negócio ser <span class="mark">encontrado e escolhido</span></h1>
-      <p class="lead">Redes sociais, tráfego pago e Google Meu Negócio, com acompanhamento de perto e conversa direta no WhatsApp.</p>
+      <p class="lead">Google Meu Negócio, redes sociais, sites, tráfego e IA para a sua empresa, com conversa direta no WhatsApp.</p>
       <div class="cta-row">
         <a class="btn btn-gold" data-cta="hero" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Grupo%20KR%20e%20quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" aria-hidden="true"><path d="M3 3h18v14H10l-5 4v-4H3z"/><path d="M8 8h8M8 12h5"/></svg>
@@ -297,58 +251,13 @@ footer a:hover { color: var(--white); }
   <div class="wrap">
     <span class="eyebrow">Serviços</span>
     <h2 class="sec-title reveal">O que o Grupo KR faz pelo seu negócio</h2>
-    <p class="sec-sub reveal">Seis frentes de marketing para você ser encontrado, ser escolhido e saber o que está funcionando.</p>
+    <p class="sec-sub reveal">Cinco frentes para você ser encontrado, ser escolhido e ganhar tempo.</p>
     <div class="grid">
-      <article class="card reveal"><span class="num">01</span><h3>Gestão de redes sociais</h3><p>Planejamento, criação e publicação de conteúdo para o seu perfil.</p><a class="more" data-cta="servico-redes" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20de%20Redes%20Sociais." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-      <article class="card reveal"><span class="num">02</span><h3>Gestão de tráfego</h3><p>Campanhas no Meta Ads e no Google Ads para levar o público certo até você.</p><a class="more" data-cta="servico-trafego" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20de%20Tr%C3%A1fego." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-      <article class="card reveal"><span class="num">03</span><h3>Google Meu Negócio</h3><p>Perfil otimizado para aparecer quando buscam pelo seu serviço.</p><a class="more" data-cta="servico-gmn" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Google%20Meu%20Neg%C3%B3cio." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-      <article class="card reveal"><span class="num">04</span><h3>Marketing de atração</h3><p>Conteúdo e estratégia para atrair clientes que já têm interesse.</p><a class="more" data-cta="servico-atracao" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Marketing%20de%20Atra%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-      <article class="card reveal"><span class="num">05</span><h3>Análise e relatórios</h3><p>Números organizados para você saber o que funciona.</p><a class="more" data-cta="servico-relatorios" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20An%C3%A1lise%20e%20Relat%C3%B3rios." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-      <article class="card reveal"><span class="num">06</span><h3>Assessoria em marketing e vendas</h3><p>Acompanhamento para alinhar a comunicação com o resultado comercial.</p><a class="more" data-cta="servico-assessoria" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Assessoria%20em%20Marketing%20e%20Vendas." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
-    </div>
-  </div>
-</section>
-
-<section id="como-funciona">
-  <div class="wrap">
-    <span class="eyebrow">Como funciona</span>
-    <h2 class="sec-title reveal">Do primeiro contato ao acompanhamento</h2>
-    <p class="sec-sub reveal">Um caminho simples, que começa com uma conversa.</p>
-    <div class="steps">
-      <div class="step reveal"><span class="n">01</span><h3>Você chama no WhatsApp</h3><p>Conta sobre o seu negócio, o que já faz hoje e o que quer melhorar.</p></div>
-      <div class="step reveal"><span class="n">02</span><h3>Entendemos o momento</h3><p>Olhamos a sua situação e indicamos por onde faz sentido começar.</p></div>
-      <div class="step reveal"><span class="n">03</span><h3>Execução e acompanhamento</h3><p>Colocamos o plano em prática e você acompanha os números com clareza.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="diferenciais" class="why dark">
-  <div class="wrap">
-    <span class="eyebrow">Diferenciais</span>
-    <h2 class="sec-title reveal">Marketing pensado para virar conversa e venda</h2>
-    <p class="sec-sub reveal">O foco é simples: o seu cliente te encontrar e chamar.</p>
-    <div class="why-grid">
-      <div class="why-item reveal"><span class="n">01</span><h3>Alinhado ao resultado comercial</h3><p>A comunicação é pensada junto com a venda, para não ficar só em curtidas.</p></div>
-      <div class="why-item reveal"><span class="n">02</span><h3>Números organizados</h3><p>Relatórios claros para você enxergar o que funciona e o que ajustar.</p></div>
-      <div class="why-item reveal"><span class="n">03</span><h3>Conversa direta</h3><p>Atendimento pelo WhatsApp, falando com o fundador, Kelvis Rodrigues.</p></div>
-      <div class="why-item reveal"><span class="n">04</span><h3>Atendimento em todo o Brasil</h3><p>Seu negócio pode estar em qualquer cidade: o contato é todo online.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="perguntas">
-  <div class="wrap faq-wrap">
-    <div>
-      <span class="eyebrow">Perguntas</span>
-      <h2 class="sec-title reveal">Dúvidas comuns</h2>
-      <p class="sec-sub" style="margin-bottom:28px">Não achou a sua? Chame no WhatsApp.</p>
-      <a class="btn btn-ink" data-cta="faq" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20Grupo%20KR." target="_blank" rel="noopener">Tirar minha dúvida</a>
-    </div>
-    <div>
-      <details><summary>Como começa o atendimento?</summary><p>Você chama no WhatsApp e conta sobre o seu negócio. Na conversa, entendemos o momento da empresa e indicamos por onde faz sentido começar.</p></details>
-      <details><summary>Vocês atendem fora da sua cidade?</summary><p>Sim. O Grupo KR atende negócios em todo o Brasil, com o contato feito pelo WhatsApp.</p></details>
-      <details><summary>Preciso ter uma presença digital pronta?</summary><p>Não. Se o seu negócio ainda está começando no digital, a conversa inicial serve justamente para entender o que já existe e o que falta.</p></details>
-      <details><summary>Como falo com o Grupo KR?</summary><p>Pelo WhatsApp (65) 99903-4981 ou pelo Instagram @grupok.r.</p></details>
+      <article class="card reveal"><span class="num">01</span><h3>Google Meu Negócio</h3><p>Perfil otimizado para aparecer quando buscam pelo seu serviço.</p><a class="more" data-cta="servico-gmn" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Google%20Meu%20Neg%C3%B3cio." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
+      <article class="card reveal"><span class="num">02</span><h3>Gestão de redes sociais</h3><p>Planejamento, criação e publicação de conteúdo para o seu perfil.</p><a class="more" data-cta="servico-redes" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20de%20Redes%20Sociais." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
+      <article class="card reveal"><span class="num">03</span><h3>Criação de sites</h3><p>Sites rápidos e modernos, pensados para levar o seu cliente até o WhatsApp.</p><a class="more" data-cta="servico-sites" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Cria%C3%A7%C3%A3o%20de%20Sites." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
+      <article class="card reveal"><span class="num">04</span><h3>Gestão de tráfego</h3><p>Campanhas no Meta Ads e no Google Ads para levar o público certo até você.</p><a class="more" data-cta="servico-trafego" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20de%20Tr%C3%A1fego." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
+      <article class="card reveal"><span class="num">05</span><h3>Implementação de IA nas empresas</h3><p>Inteligência artificial na rotina da empresa para organizar processos e atender melhor.</p><a class="more" data-cta="servico-ia" href="https://wa.me/5565999034981?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Implementa%C3%A7%C3%A3o%20de%20IA%20na%20minha%20empresa." target="_blank" rel="noopener">Falar sobre isso <span aria-hidden="true">→</span></a></article>
     </div>
   </div>
 </section>
