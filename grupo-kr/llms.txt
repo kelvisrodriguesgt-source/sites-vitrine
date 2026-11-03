@@ -13,7 +13,7 @@
 - Gestão de redes sociais: planejamento, criação e publicação de conteúdo para o perfil.
 - Criação de sites: sites rápidos e modernos, pensados para levar o cliente até o WhatsApp.
 - Gestão de tráfego: campanhas no Meta Ads e no Google Ads.
-- Implementação de IA nas empresas: inteligência artificial na rotina da empresa para organizar processos e atender melhor.
+- Implementação e automação de IA: inteligência artificial e automações na rotina da empresa para organizar processos e atender melhor.
 
 ## Sobre
 O Grupo KR atende negócios de qualquer cidade do Brasil. O primeiro contato é feito pelo WhatsApp.
