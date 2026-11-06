@@ -41,6 +41,7 @@ function setup({ reduce = false, io = true, readyState = 'complete' } = {}) {
   Object.defineProperty(document, 'readyState', { configurable: true, get: () => readyState });
   Object.defineProperty(document, 'fonts', { configurable: true, value: { ready: Promise.resolve() } });
   const win = {
+    location: window.location,
     matchMedia: (q) => ({ matches: reduce && q.includes('reduce') }),
     CSS: { supports: () => false },
     requestAnimationFrame: (fn) => fn(),
@@ -117,6 +118,7 @@ describe('initMotion', () => {
     Object.defineProperty(document, 'readyState', { configurable: true, get: () => 'complete' });
     initMotion({
       win: {
+        location: window.location,
         matchMedia: () => ({ matches: false }),
         CSS: { supports: () => false },
         IntersectionObserver: FakeIO,
@@ -183,6 +185,7 @@ describe('initMotion', () => {
     const add = vi.fn();
     initMotion({
       win: {
+        location: window.location,
         matchMedia: () => ({ matches: false }),
         CSS: { supports: () => true },
         IntersectionObserver: FakeIO,
@@ -201,6 +204,27 @@ describe('initMotion', () => {
     expect(document.querySelector('.card').classList.contains('is-ready')).toBe(true);
     expect(document.querySelector('.reveal').classList.contains('in')).toBe(true);
     expect(document.querySelector('img').classList.contains('is-loaded')).toBe(true);
+  });
+
+  it('?slow liga a câmera lenta, mostra o selo e segura o skeleton por 1,2s', async () => {
+    window.history.pushState({}, '', '/?slow');
+    setup();
+    expect(document.documentElement.classList.contains('motion-slow')).toBe(true);
+    expect(document.querySelector('.slow-badge').textContent).toMatch(/câmera lenta/);
+    const card = document.querySelector('.card');
+    observers.find((o) => o.targets.includes(card)).fire(card, true);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(card.classList.contains('is-ready')).toBe(false);
+    await vi.advanceTimersByTimeAsync(300);
+    expect(card.classList.contains('is-ready')).toBe(true);
+    window.history.pushState({}, '', '/');
+  });
+
+  it('?slow com menos movimento explica por que quase nada anima', () => {
+    window.history.pushState({}, '', '/?slow');
+    setup({ reduce: true });
+    expect(document.querySelector('.slow-badge').textContent).toMatch(/reduzir movimento/);
+    window.history.pushState({}, '', '/');
   });
 
   it('navegador sem IntersectionObserver: mostra tudo pronto', () => {

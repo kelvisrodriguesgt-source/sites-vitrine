@@ -11,6 +11,17 @@ const $$ = (root, sel) => Array.from(root.querySelectorAll(sel));
 export function initMotion({ win, doc }) {
   const root = doc.documentElement;
   const reduce = prefersReducedMotion(win);
+  /* ?slow: modo de análise. Animações 3x mais lentas, skeleton visível por 1,2s e um selo dizendo o que está ativo. */
+  const slow = new URLSearchParams(win.location.search).has('slow');
+  if (slow) {
+    root.classList.add('motion-slow');
+    const badge = doc.createElement('p');
+    badge.className = 'slow-badge';
+    badge.textContent = reduce
+      ? 'Modo análise: o seu sistema está com "reduzir movimento" ligado, por isso quase nada anima.'
+      : 'Modo análise: animações em câmera lenta. Recarregue a página para rever.';
+    doc.body.appendChild(badge);
+  }
 
   /* ---------- 1) progresso de carregamento (marcos reais, não simulado) ---------- */
   const loadBar = doc.querySelector('.load-bar');
@@ -80,7 +91,11 @@ export function initMotion({ win, doc }) {
   /* ---------- 4) skeleton -> conteúdo, quando o bloco chega na tela e fontes/imagens estão prontos ---------- */
   const skels = $$(doc, '[data-skel]');
   const hydrate = (el) =>
-    Promise.all([fontsReady, ...$$(el, 'img').map(imgReady)]).then(() => el.classList.add('is-ready'));
+    Promise.all([
+      fontsReady,
+      ...$$(el, 'img').map(imgReady),
+      slow ? new Promise((r) => win.setTimeout(r, 1200)) : null
+    ]).then(() => el.classList.add('is-ready'));
 
   if (reduce || !('IntersectionObserver' in win)) {
     for (const el of skels) el.classList.add('is-ready');

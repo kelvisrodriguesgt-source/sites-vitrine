@@ -310,6 +310,13 @@ details:has(> summary:focus-visible)::details-content { transition: none; }
 /* --- lazy rendering: seções abaixo da dobra só são desenhadas perto da tela --- */
 .services, .faq, .final, footer { content-visibility: auto; contain-intrinsic-size: auto 640px; }
 
+/* --- ?slow: modo de análise em câmera lenta --- */
+.motion-slow { --t-fast: 480ms; --t-base: 840ms; --t-exit: 600ms; --t-enter: 1440ms; }
+.motion-slow .consent { animation-duration: 960ms; }
+.motion-slow [data-skel]:not(.is-ready)::after { animation-duration: 2800ms; }
+.motion-slow .load-bar i { transition-duration: 900ms; }
+.slow-badge { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 200; max-width: 520px; margin: 0; padding: 10px 14px; background: var(--ink); color: #fff; font-size: 13px; line-height: 1.4; border-left: 3px solid var(--gold); pointer-events: none; }
+
 /* --- plano B: se o JS de movimento não confirmou, mostra tudo sem skeleton --- */
 .motion-timeout [data-skel] > *, .motion-timeout .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
 .motion-timeout [data-skel]::before, .motion-timeout [data-skel]::after, .motion-timeout .load-bar { display: none !important; }
