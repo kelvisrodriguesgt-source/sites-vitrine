@@ -21,7 +21,7 @@ export function shouldSample(rate, rand = Math.random) {
 }
 
 export function createObservability({ config, consentGranted, send, win }) {
-  const enabled = Boolean(config && config.endpoint) && consentGranted === true;
+  const enabled = Boolean(config?.endpoint) && consentGranted === true;
   let started = false;
 
   function report(type, data) {
@@ -38,7 +38,10 @@ export function createObservability({ config, consentGranted, send, win }) {
     if ('PerformanceObserver' in win) {
       const watch = (entryType, handle) => {
         try {
-          new win.PerformanceObserver((list) => list.getEntries().forEach(handle)).observe({ type: entryType, buffered: true });
+          new win.PerformanceObserver((list) => list.getEntries().forEach(handle)).observe({
+            type: entryType,
+            buffered: true
+          });
         } catch {
           /* navegador sem suporte a esse tipo */
         }

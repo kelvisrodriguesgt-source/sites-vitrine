@@ -1,14 +1,5 @@
 /* Funções puras de movimento: fáceis de testar, sem DOM. */
 
-export const STAGGER_STEP_MS = 70;
-export const STAGGER_MAX = 5;
-
-/** Atraso de entrada por posição: 0, 70, 140... com teto, para a lista não demorar demais. */
-export function staggerDelay(index, step = STAGGER_STEP_MS, max = STAGGER_MAX) {
-  const i = Math.max(0, Math.min(Math.floor(index), max));
-  return i * step;
-}
-
 /** Progresso de rolagem de 0 a 1. */
 export function scrollProgress(scrollTop, scrollHeight, clientHeight) {
   const range = scrollHeight - clientHeight;
@@ -29,7 +20,7 @@ export function loadProgress({ parsed = false, fonts = false, loaded = false } =
 /** Quem pede menos movimento recebe tudo pronto, sem skeleton nem deslocamentos. */
 export function prefersReducedMotion(win) {
   try {
-    return Boolean(win.matchMedia && win.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    return Boolean(win.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
   } catch {
     return false;
   }

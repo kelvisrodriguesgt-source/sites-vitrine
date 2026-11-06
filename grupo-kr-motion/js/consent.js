@@ -8,7 +8,7 @@ export function createConsentStore({ storage, now = () => Date.now(), key = CONS
   function read() {
     try {
       const v = JSON.parse(storage.getItem(key));
-      if (!v || !v.choice || !v.at) return null;
+      if (!v?.choice || !v.at) return null;
       if (now() - new Date(v.at).getTime() > maxAgeMs) return null;
       return v.choice;
     } catch {

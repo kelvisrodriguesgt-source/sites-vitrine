@@ -1,6 +1,6 @@
 import { OBSERVABILITY, TRACKING } from './config.js';
-import { createObservability } from './observability.js';
 import { initMotion } from './motion.js';
+import { createObservability } from './observability.js';
 import { initTracking } from './tracking.js';
 
 initMotion({ win: window, doc: document });
@@ -10,7 +10,7 @@ function startObservability(consentGranted) {
   obs = createObservability({
     config: OBSERVABILITY,
     consentGranted,
-    send: (url, body) => navigator.sendBeacon && navigator.sendBeacon(url, body),
+    send: (url, body) => navigator.sendBeacon?.(url, body),
     win: window
   });
   obs.start();

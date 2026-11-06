@@ -304,6 +304,7 @@ details:has(> summary:focus-visible)::details-content { transition: none; }
 @keyframes fade-out { to { opacity: 0; } }
 
 /* --- páginas legais --- */
+@media (max-width: 920px) { .legal-top .btn { display: inline-flex; } }
 .js .legal-page .doc { animation: enter var(--t-enter) var(--ease-out) 40ms backwards; }
 
 /* --- lazy rendering: seções abaixo da dobra só são desenhadas perto da tela --- */

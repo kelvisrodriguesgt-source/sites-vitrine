@@ -1,7 +1,8 @@
 /* Servidor estático para testes: aplica os cabeçalhos do vercel.json do site e as URLs limpas (/privacidade).
  * Uso: node tools/serve.mjs <pasta-do-site> <porta> */
+
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
 import { extname, join, normalize, resolve } from 'node:path';
 
 const MIME = {
@@ -48,7 +49,7 @@ export function startServer(rootArg, port) {
   }).listen(port, '127.0.0.1');
 }
 
-if (process.argv[1] && process.argv[1].endsWith('serve.mjs')) {
+if (process.argv[1]?.endsWith('serve.mjs')) {
   const [, , dir, port] = process.argv;
   startServer(dir, Number(port));
 }

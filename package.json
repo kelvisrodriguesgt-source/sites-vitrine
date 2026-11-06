@@ -1,0 +1,34 @@
+{
+  "name": "sites-vitrine",
+  "private": true,
+  "type": "module",
+  "description": "Sites-vitrine do Grupo KR: qualidade de código, testes e observabilidade",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "arch": "arch-contract check",
+    "knip": "knip --production",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "mutation": "stryker run",
+    "e2e": "playwright test",
+    "commitlint": "commitlint --edit",
+    "verify": "npm run lint && npm run arch && npm run knip && npm run test:coverage && npm run e2e"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.6",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@playwright/test": "^1.65.0",
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/vitest-runner": "^10.1.1",
+    "@vitest/coverage-v8": "^5.1.0",
+    "jsdom": "^29.1.1",
+    "knip": "^6.44.1",
+    "vitest": "^5.1.0"
+  }
+}

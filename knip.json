@@ -1,0 +1,6 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["grupo-kr-motion/js/boot.js", "grupo-kr-motion/js/main.js", "tools/serve.mjs"],
+  "project": ["grupo-kr-motion/js/**/*.js", "tools/**/*.mjs"],
+  "ignoreDependencies": ["@commitlint/config-conventional", "@vitest/coverage-v8", "@stryker-mutator/vitest-runner"]
+}

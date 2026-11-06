@@ -15,16 +15,24 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
     try {
       return w.localStorage;
     } catch {
-      return { getItem: () => null, setItem: () => { throw new Error('sem storage'); } };
+      return {
+        getItem: () => null,
+        setItem: () => {
+          throw new Error('sem storage');
+        }
+      };
     }
   }
 
   function loadMeta(id) {
     if (win.fbq) return;
-    const n = (win.fbq = function () {
+    // biome-ignore-start lint/complexity/noArguments: o snippet oficial do Meta Pixel depende do objeto arguments
+    const n = function () {
       if (n.callMethod) n.callMethod.apply(n, arguments);
       else n.queue.push(arguments);
-    });
+    };
+    // biome-ignore-end lint/complexity/noArguments: fim do trecho do snippet do Meta Pixel
+    win.fbq = n;
     if (!win._fbq) win._fbq = n;
     n.push = n;
     n.loaded = true;
@@ -40,14 +48,27 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
 
   function loadGA(id) {
     win.dataLayer = win.dataLayer || [];
-    win.gtag = function () { win.dataLayer.push(arguments); };
-    win.gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    win.gtag = function () {
+      // biome-ignore lint/complexity/noArguments: o gtag.js só reconhece o objeto arguments no dataLayer
+      win.dataLayer.push(arguments);
+    };
+    win.gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
     win.gtag('js', new Date());
     const s = doc.createElement('script');
     s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
     doc.head.appendChild(s);
-    win.gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+    win.gtag('consent', 'update', {
+      ad_storage: 'granted',
+      analytics_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
     win.gtag('config', id);
   }
 
@@ -61,13 +82,13 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
   function clearTrackingCookies() {
     const host = win.location.hostname;
     const parts = host.split('.');
-    const domains = [host, '.' + host];
-    if (parts.length > 2) domains.push('.' + parts.slice(-2).join('.'));
+    const domains = [host, `.${host}`];
+    if (parts.length > 2) domains.push(`.${parts.slice(-2).join('.')}`);
     trackingCookieNames(doc.cookie).forEach((name) => {
       domains.forEach((dom) => {
-        doc.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' + dom;
+        doc.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${dom}`;
       });
-      doc.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      doc.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
     });
   }
 
@@ -98,11 +119,11 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
 
   function decide(choice) {
     const previous = store.read();
-    store.save(choice);
+    if (hasTracking) store.save(choice); // no modo ?motion-demo (sem IDs) nada é gravado
     closeBanner();
     if (choice === 'granted') {
       loadTrackers();
-      onConsent && onConsent(true);
+      onConsent?.(true);
     } else if (previous === 'granted' || loaded) {
       clearTrackingCookies();
       win.location.reload();
@@ -121,7 +142,11 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
     h.textContent = 'Cookies e privacidade';
 
     const p = doc.createElement('p');
-    p.appendChild(doc.createTextNode('Usamos cookies de medição e anúncios para entender o que funciona e melhorar o site. Você escolhe se aceita. Saiba mais na '));
+    p.appendChild(
+      doc.createTextNode(
+        'Usamos cookies de medição e anúncios para entender o que funciona e melhorar o site. Você escolhe se aceita. Saiba mais na '
+      )
+    );
     const a = doc.createElement('a');
     a.href = '/privacidade';
     a.textContent = 'Política de Privacidade';
@@ -157,7 +182,7 @@ export function initTracking({ win, doc, tracking, needsConsent, onConsent }) {
     const c = store.read();
     if (c === 'granted') {
       loadTrackers();
-      onConsent && onConsent(true);
+      onConsent?.(true);
     } else if (c !== 'denied' && !demo) {
       openBanner();
     }

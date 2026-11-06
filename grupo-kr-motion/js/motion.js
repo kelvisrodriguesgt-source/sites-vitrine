@@ -15,13 +15,13 @@ export function initMotion({ win, doc }) {
   /* ---------- 1) progresso de carregamento (marcos reais, não simulado) ---------- */
   const loadBar = doc.querySelector('.load-bar');
   const scrollBar = doc.querySelector('.scroll-bar');
-  const setVar = (el, name, v) => el && el.style.setProperty(name, String(v));
+  const setVar = (el, name, v) => el?.style.setProperty(name, String(v));
 
   const state = { parsed: doc.readyState !== 'loading', fonts: false, loaded: doc.readyState === 'complete' };
   const paintLoad = () => setVar(loadBar, '--p', loadProgress(state));
   paintLoad();
 
-  const fontsReady = doc.fonts && doc.fonts.ready ? doc.fonts.ready : Promise.resolve();
+  const fontsReady = doc.fonts?.ready ? doc.fonts.ready : Promise.resolve();
   fontsReady.then(() => {
     state.fonts = true;
     paintLoad();
@@ -30,11 +30,14 @@ export function initMotion({ win, doc }) {
   const finishLoad = () => {
     state.loaded = true;
     paintLoad();
-    win.setTimeout(() => {
-      loadBar && loadBar.classList.add('is-done');
-      scrollBar && scrollBar.classList.add('is-active');
-      root.classList.add('is-loaded');
-    }, reduce ? 0 : 260);
+    win.setTimeout(
+      () => {
+        loadBar?.classList.add('is-done');
+        scrollBar?.classList.add('is-active');
+        root.classList.add('is-loaded');
+      },
+      reduce ? 0 : 260
+    );
   };
   if (doc.readyState === 'complete') finishLoad();
   else win.addEventListener('load', finishLoad, { once: true });
@@ -47,12 +50,16 @@ export function initMotion({ win, doc }) {
       ticking = false;
       setVar(scrollBar, '--p', scrollProgress(root.scrollTop, root.scrollHeight, root.clientHeight));
     };
-    win.addEventListener('scroll', () => {
-      if (!ticking) {
-        ticking = true;
-        win.requestAnimationFrame(update);
-      }
-    }, { passive: true });
+    win.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true;
+          win.requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
     update();
   }
 
@@ -65,10 +72,10 @@ export function initMotion({ win, doc }) {
           img.addEventListener('load', res, { once: true });
           img.addEventListener('error', res, { once: true });
         });
-  $$(doc, 'img[data-lazy]').forEach((img) => {
-    if (reduce) return imgDone(img);
-    imgReady(img).then(() => imgDone(img));
-  });
+  for (const img of $$(doc, 'img[data-lazy]')) {
+    if (reduce) imgDone(img);
+    else imgReady(img).then(() => imgDone(img));
+  }
 
   /* ---------- 4) skeleton -> conteúdo, quando o bloco chega na tela e fontes/imagens estão prontos ---------- */
   const skels = $$(doc, '[data-skel]');
@@ -76,7 +83,7 @@ export function initMotion({ win, doc }) {
     Promise.all([fontsReady, ...$$(el, 'img').map(imgReady)]).then(() => el.classList.add('is-ready'));
 
   if (reduce || !('IntersectionObserver' in win)) {
-    skels.forEach((el) => el.classList.add('is-ready'));
+    for (const el of skels) el.classList.add('is-ready');
   } else {
     const io = new win.IntersectionObserver(
       (entries) => {
@@ -88,13 +95,13 @@ export function initMotion({ win, doc }) {
       },
       { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
     );
-    skels.forEach((el) => io.observe(el));
+    for (const el of skels) io.observe(el);
   }
 
   /* ---------- 5) entrada de títulos e blocos ao rolar ---------- */
   const reveals = $$(doc, '.reveal');
   if (reduce || !('IntersectionObserver' in win)) {
-    reveals.forEach((el) => el.classList.add('in'));
+    for (const el of reveals) el.classList.add('in');
   } else {
     const rio = new win.IntersectionObserver(
       (entries) => {
@@ -107,7 +114,7 @@ export function initMotion({ win, doc }) {
       },
       { threshold: 0.12 }
     );
-    reveals.forEach((el) => rio.observe(el));
+    for (const el of reveals) rio.observe(el);
   }
 
   /* ---------- 6) barra fixa do celular: sai quando o CTA final já está na tela, volta depois ---------- */
@@ -115,7 +122,9 @@ export function initMotion({ win, doc }) {
   const finalCta = doc.querySelector('#contato');
   if (sticky && finalCta && 'IntersectionObserver' in win) {
     new win.IntersectionObserver(
-      (entries) => entries.forEach((en) => sticky.classList.toggle('is-hidden', en.isIntersecting)),
+      (entries) => {
+        for (const en of entries) sticky.classList.toggle('is-hidden', en.isIntersecting);
+      },
       { threshold: 0.35 }
     ).observe(finalCta);
   }
