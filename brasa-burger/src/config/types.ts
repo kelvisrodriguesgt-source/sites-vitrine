@@ -21,6 +21,8 @@ export interface Product {
   /** Aparece na seção "Fresco, quente e irresistível". */
   featured?: boolean;
   badge?: string;
+  /** false = aparece como indisponível e não pode ser adicionado ao pedido. */
+  available?: boolean;
 }
 
 export interface HoursRow {

@@ -81,3 +81,11 @@ describe('validação do pedido', () => {
     expect(validateCheckout(base, 2)).toEqual({});
   });
 });
+
+describe('número do pedido na mensagem', () => {
+  it('aparece no título quando o pedido foi registrado no painel', () => {
+    const msg = buildOrderMessage({ brandName: 'Brasa', demo: false, lines: [], checkout: base, orderNumber: 1001 });
+    expect(msg.split('\n')[0]).toBe('*Novo pedido #1001 - Brasa*');
+    expect(buildOrderMessage({ brandName: 'Brasa', demo: false, lines: [], checkout: base }).split('\n')[0]).toBe('*Novo pedido - Brasa*');
+  });
+});

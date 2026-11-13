@@ -9,7 +9,7 @@ const info = infoData as Pick<SiteConfig, 'brand' | 'contact' | 'address' | 'hou
  * ARQUIVO CENTRAL DE PERSONALIZAÇÃO.
  * Para transformar este protótipo em outra hamburgueria, altere apenas este arquivo
  * (e troque as fotos em /public/img). Textos, produtos, preços, contatos e horários ficam em
- * src/content/*.json, que o painel /admin também edita. Todos os dados são FICTÍCIOS e demonstrativos.
+ * src/content/*.json. O cardápio também pode ser editado no painel /admin (modo demonstração). Todos os dados são FICTÍCIOS e demonstrativos.
  */
 export const site: SiteConfig = {
   brand: info.brand,

@@ -3,6 +3,7 @@ import { type FormEvent, useEffect, useRef, useState } from 'react';
 import { site } from '../config/site';
 import { useCart } from '../context/CartContext';
 import { formatBRL } from '../lib/money';
+import { createOrder } from '../shared/ordersStore';
 import { buildOrderMessage, buildWhatsAppUrl, type CheckoutData, type CheckoutErrors, validateCheckout } from '../lib/whatsapp';
 
 type Step = 'cart' | 'checkout' | 'sent';
@@ -19,6 +20,7 @@ export function CartDrawer() {
   const [form, setForm] = useState<CheckoutData>(EMPTY);
   const [errors, setErrors] = useState<CheckoutErrors>({});
   const [waUrl, setWaUrl] = useState('');
+  const [orderNumber, setOrderNumber] = useState<number | null>(null);
   const panel = useRef<HTMLElement>(null);
   const opener = useRef<HTMLElement | null>(null);
 
@@ -78,7 +80,10 @@ export function CartDrawer() {
       return;
     }
     if (Object.keys(found).length) return;
-    const text = buildOrderMessage({ brandName: site.brand.name, demo: site.brand.demo, lines, checkout: form });
+    // Registra o pedido no painel (modo demonstração) antes de abrir o WhatsApp; se falhar, o envio segue normalmente.
+    const order = createOrder(form, lines);
+    setOrderNumber(order?.number ?? null);
+    const text = buildOrderMessage({ brandName: site.brand.name, demo: site.brand.demo, lines, checkout: form, orderNumber: order?.number });
     const url = buildWhatsAppUrl(site.contact.whatsapp, text);
     setWaUrl(url);
     window.open(url, '_blank', 'noopener');
@@ -124,6 +129,7 @@ export function CartDrawer() {
               <Check className="h-8 w-8" aria-hidden="true" />
             </span>
             <p className="font-heading text-xl font-extrabold uppercase">WhatsApp aberto</p>
+            {orderNumber && <p className="rounded-md bg-white px-4 py-2 font-heading font-extrabold uppercase text-wine">Pedido #{orderNumber}</p>}
             <p className="text-char/75">{site.order.sentNotice}</p>
             <a href={waUrl} target="_blank" rel="noopener" className="btn btn-tomato w-full">
               ABRIR WHATSAPP DE NOVO

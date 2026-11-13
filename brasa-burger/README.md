@@ -36,19 +36,35 @@ O carrinho fica no navegador. Ao finalizar, o site monta uma mensagem organizada
 dados do cliente e total) e abre o WhatsApp do número configurado. Não há pagamento no site, e o pedido só vale
 depois que o cliente envia a mensagem e o atendimento confirma. A taxa de entrega é informada pelo atendimento.
 
-## Painel de edição (/admin)
+## Painel da loja (/admin)
 
-O endereço `/admin` abre um painel (Decap CMS, gratuito) para editar sem mexer em código: produtos e preços,
-fotos, contatos, endereço, horários e os textos das seções. O painel lê e grava os arquivos de `src/content/*.json`,
-os mesmos que o site usa.
+O endereço `/admin` abre o painel da loja, nas cores do site. Senha de demonstração: `brasa123` (definida em
+`src/admin/config.ts`).
 
-- **Modo atual (demonstração):** `backend: test-repo` em `public/admin/config.yml`. Dá para mexer em tudo, mas nada
-  é salvo no site; ao recarregar, volta ao conteúdo atual.
-- **Modo real:** cada "Publicar" vira um commit no GitHub e a Vercel atualiza o site. Para isso:
-  1. criar um aplicativo OAuth no GitHub (Settings > Developer settings > OAuth Apps);
-  2. publicar um pequeno servidor de autenticação (por exemplo, uma função na Vercel) com o Client ID e o Secret;
-  3. trocar o bloco `backend` do `config.yml` pelo bloco comentado, com o endereço desse servidor;
-  4. quem for editar precisa de conta no GitHub com acesso de escrita ao repositório.
-- A rota `/admin` tem uma política de segurança (CSP) mais frouxa que a do site, porque o Decap exige `unsafe-eval`.
-  Ela não é indexada (noindex) e não fica ligada a nenhuma página do site.
-- Cores, SEO, categorias, diferenciais e galeria continuam em `src/config/site.ts` (ajuste técnico).
+- **Dashboard:** faturamento, pedidos, ticket médio e pedidos em andamento (hoje, 7 e 30 dias, com comparação
+  com o período anterior), gráfico por dia ou por hora, entrega x retirada, formas de pagamento e mais vendidos.
+- **Pedidos:** lista por etapa (novo, em preparo, pronto/saiu para entrega, concluído, cancelado), busca,
+  detalhes com histórico, avanço de status com um toque, cancelamento e cópia do resumo.
+- **Produtos:** cardápio em cards, como num e-commerce: novo produto, editar, duplicar, excluir (com desfazer),
+  preço, categoria, descrição, selo, foto (enviada do computador/celular e reduzida automaticamente),
+  disponível/indisponível e até 3 destaques na página inicial. O site muda na hora.
+- **Configurações:** dados de exemplo (ligar/desligar), exportar pedidos em CSV, restaurar o cardápio original.
+
+### Como funciona hoje (modo demonstração)
+
+Site e painel conversam pelo `localStorage` do **mesmo navegador** (`src/shared/`). Por isso:
+
+- um pedido feito no site, no mesmo navegador, aparece no painel na hora (numeração a partir de #1001);
+- o painel traz 30 dias de vendas fictícias para o dashboard fazer sentido (desligáveis nas Configurações);
+- **pedidos de clientes em outros aparelhos não chegam ao painel**, e o cardápio editado só vale neste navegador;
+- a senha fica no código da página: mostra a tela de login, mas **não protege dados de verdade**.
+
+### Versão real
+
+Trocar a camada `src/shared/` (storage, ordersStore, catalog) por chamadas a uma API: banco de dados online
+(pedidos e cardápio), login real com sessão no servidor, recebimento dos pedidos do site e aviso ao atendente.
+As telas continuam as mesmas. O painel é uma segunda entrada do Vite (`admin/index.html`), com CSS próprio
+(`tailwind.admin.config.ts`), e tem a mesma política de segurança (CSP) estrita do site. Não é indexado (noindex).
+
+O texto das seções, contatos, endereço e horários continuam em `src/content/*.json`; cores, SEO, categorias,
+diferenciais e galeria, em `src/config/site.ts`.

@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss';
 import { site } from './src/config/site';
 
 export default {
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  // O painel (/admin) tem a própria configuração e folha de estilos.
+  content: ['./index.html', './src/**/*.{ts,tsx}', '!./src/admin/**'],
   theme: {
     extend: {
       colors: { ...site.colors },

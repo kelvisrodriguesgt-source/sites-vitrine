@@ -1,0 +1,106 @@
+@config "../../tailwind.admin.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-char antialiased;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-mustard ring-offset-2 ring-offset-paper;
+  }
+  button,
+  [role='button'],
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .a-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-heading text-sm font-bold transition duration-150 ease-out active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .a-btn-primary {
+    @apply bg-mustard text-char shadow-[0_3px_0_0_#b87b00] hover:bg-[#ffb921] active:translate-y-0.5 active:shadow-[0_1px_0_0_#b87b00];
+  }
+  .a-btn-dark {
+    @apply bg-char text-white hover:bg-wine;
+  }
+  .a-btn-ghost {
+    @apply border border-char/20 bg-white text-char hover:border-char/40 hover:bg-char/5;
+  }
+  .a-btn-danger {
+    @apply bg-tomato text-white hover:bg-[#f45a35];
+  }
+  .a-icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-lg text-char/65 transition hover:bg-char/10 hover:text-char active:scale-95;
+  }
+  .a-card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+  .a-input {
+    @apply block min-h-11 w-full rounded-lg border border-char/20 bg-white px-3.5 py-2.5 text-base text-char placeholder:text-char/40 focus:border-wine focus:outline-none focus:ring-2 focus:ring-mustard;
+  }
+  .a-label {
+    @apply block font-heading text-xs font-extrabold uppercase tracking-wider text-char/70;
+  }
+  .a-chip {
+    @apply inline-flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-full border px-4 font-heading text-sm font-bold transition;
+  }
+  .a-chip-on {
+    @apply border-char bg-char text-white;
+  }
+  .a-chip-off {
+    @apply border-char/20 bg-white text-char/80 hover:border-char/50;
+  }
+}
+
+@keyframes a-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes a-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+@keyframes a-slide {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+@keyframes a-rise {
+  from {
+    transform: translateY(100%);
+  }
+}
+.a-fade {
+  animation: a-fade 0.2s ease-out;
+}
+.a-pop {
+  animation: a-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.a-slide {
+  animation: a-slide 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.a-rise {
+  animation: a-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .a-fade,
+  .a-pop,
+  .a-slide,
+  .a-rise {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

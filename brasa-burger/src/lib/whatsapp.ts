@@ -30,13 +30,15 @@ interface MessageInput {
   demo: boolean;
   lines: CartLine[];
   checkout: CheckoutData;
+  /** Número do pedido registrado no painel, quando houver. */
+  orderNumber?: number;
 }
 
 /** Monta a mensagem organizada que será enviada ao WhatsApp. */
-export function buildOrderMessage({ brandName, demo, lines, checkout }: MessageInput): string {
+export function buildOrderMessage({ brandName, demo, lines, checkout, orderNumber }: MessageInput): string {
   const { subtotalCents, totalCents } = totals(lines);
   const out: string[] = [];
-  out.push(`*Novo pedido - ${brandName}*`);
+  out.push(`*Novo pedido${orderNumber ? ` #${orderNumber}` : ''} - ${brandName}*`);
   if (demo) out.push('_Pedido de demonstração enviado pelo site._');
   out.push('');
   out.push(`*Cliente:* ${checkout.name.trim()}`);

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { site } from '../config/site';
 import type { IconName, Product } from '../config/types';
 import { useCart } from '../context/CartContext';
+import { isAvailable } from '../shared/catalog';
 import { useReveal } from '../hooks/useReveal';
 import { formatBRL, toCents } from '../lib/money';
 import { BrushStroke } from './icons';
@@ -21,6 +22,13 @@ export function AddButton({ product, className = 'btn btn-tomato w-full' }: { pr
   const timer = useRef<number>(0);
   useEffect(() => () => window.clearTimeout(timer.current), []);
   const qty = items[product.id] ?? 0;
+  if (!isAvailable(product)) {
+    return (
+      <button type="button" disabled className={`${className} cursor-not-allowed opacity-60`} aria-label={`${product.name} está indisponível no momento`}>
+        <span>INDISPONÍVEL</span>
+      </button>
+    );
+  }
   return (
     <button
       type="button"
@@ -64,6 +72,7 @@ interface Props {
 export function ProductCard({ product, tone = 'light', priority = false }: Props) {
   const ref = useReveal<HTMLElement>();
   const dark = tone === 'dark';
+  const available = isAvailable(product);
   return (
     <article
       ref={ref}
@@ -80,12 +89,17 @@ export function ProductCard({ product, tone = 'light', priority = false }: Props
             height={600}
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
-            className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${product.imagePosition ?? ''}`}
+            className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${product.imagePosition ?? ''} ${available ? '' : 'grayscale opacity-60'}`}
           />
         ) : (
           <BrandTile product={product} />
         )}
-        {product.badge && (
+        {!available && (
+          <span className="absolute inset-0 flex items-center justify-center bg-char/55">
+            <span className="rounded bg-white px-3 py-1.5 font-heading text-xs font-extrabold uppercase tracking-wider text-char">Indisponível</span>
+          </span>
+        )}
+        {available && product.badge && (
           <span className="absolute left-3 top-3 rounded bg-mustard px-2.5 py-1 font-heading text-[0.68rem] font-extrabold uppercase tracking-wider text-char">
             {product.badge}
           </span>

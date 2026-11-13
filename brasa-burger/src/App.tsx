@@ -13,32 +13,35 @@ import { MenuSection } from './components/MenuSection';
 import { Story } from './components/Story';
 import { Toast } from './components/Toast';
 import { CartProvider } from './context/CartContext';
+import { CatalogProvider } from './context/CatalogContext';
 
 export function App() {
   return (
-    <CartProvider>
-      <a
-        href="#conteudo"
-        className="sr-only z-[60] rounded-md bg-mustard px-4 py-2 font-bold text-char focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-      >
-        Pular para o conteúdo
-      </a>
-      <Header />
-      <main id="conteudo">
-        <Hero />
-        <Highlights />
-        <MenuSection />
-        <Experience />
-        <Combos />
-        <Story />
-        <Instagram />
-        <Contact />
-        <FinalCta />
-      </main>
-      <Footer />
-      <FloatingActions />
-      <Toast />
-      <CartDrawer />
-    </CartProvider>
+    <CatalogProvider>
+      <CartProvider>
+        <a
+          href="#conteudo"
+          className="sr-only z-[60] rounded-md bg-mustard px-4 py-2 font-bold text-char focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Pular para o conteúdo
+        </a>
+        <Header />
+        <main id="conteudo">
+          <Hero />
+          <Highlights />
+          <MenuSection />
+          <Experience />
+          <Combos />
+          <Story />
+          <Instagram />
+          <Contact />
+          <FinalCta />
+        </main>
+        <Footer />
+        <FloatingActions />
+        <Toast />
+        <CartDrawer />
+      </CartProvider>
+    </CatalogProvider>
   );
 }

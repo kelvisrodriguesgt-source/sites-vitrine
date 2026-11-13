@@ -1,12 +1,14 @@
 import { type KeyboardEvent, useRef, useState } from 'react';
 import { site } from '../config/site';
+import { useCatalog } from '../context/CatalogContext';
 import { ProductCard } from './ProductCard';
 import { SectionHeading } from './SectionHeading';
 
 export function MenuSection() {
   const [active, setActive] = useState(site.categories[0]?.id ?? '');
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const products = site.products.filter((p) => p.category === active);
+  const { products: all } = useCatalog();
+  const products = all.filter((p) => p.category === active);
 
   const onKeyDown = (e: KeyboardEvent, index: number) => {
     const last = site.categories.length - 1;
@@ -66,6 +68,7 @@ export function MenuSection() {
           {products.map((p) => (
             <ProductCard key={p.id} product={p} tone="dark" />
           ))}
+          {products.length === 0 && <p className="text-white/70 sm:col-span-2 lg:col-span-3">Nenhum item nesta categoria no momento.</p>}
         </div>
       </div>
     </section>

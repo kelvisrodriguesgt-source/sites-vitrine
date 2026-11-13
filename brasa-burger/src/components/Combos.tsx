@@ -1,14 +1,16 @@
 import { Check } from 'lucide-react';
 import { site } from '../config/site';
+import { useCatalog } from '../context/CatalogContext';
+import { isAvailable } from '../shared/catalog';
+import type { Product } from '../config/types';
 import { formatBRL, toCents } from '../lib/money';
 import { useReveal } from '../hooks/useReveal';
 import { AddButton } from './ProductCard';
 import { SectionHeading } from './SectionHeading';
 
-function ComboCard({ id }: { id: string }) {
+function ComboCard({ p }: { p: Product }) {
   const ref = useReveal<HTMLElement>();
-  const p = site.products.find((x) => x.id === id);
-  if (!p) return null;
+  const available = isAvailable(p);
   const parts = p.description.replace(/\.$/, '').split(' + ');
   return (
     <article ref={ref} className="group flex flex-col overflow-hidden rounded-lg bg-char text-white shadow-[0_18px_40px_-18px_rgb(33_23_21/0.8)] transition duration-300 hover:-translate-y-1">
@@ -21,10 +23,15 @@ function ComboCard({ id }: { id: string }) {
             height={600}
             loading="lazy"
             decoding="async"
-            className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${p.imagePosition ?? ''}`}
+            className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${p.imagePosition ?? ''} ${available ? '' : 'grayscale opacity-60'}`}
           />
         )}
-        {p.badge && (
+        {!available && (
+          <span className="absolute inset-0 flex items-center justify-center bg-char/55">
+            <span className="rounded bg-white px-3 py-1.5 font-heading text-xs font-extrabold uppercase tracking-wider text-char">Indisponível</span>
+          </span>
+        )}
+        {available && p.badge && (
           <span className="absolute left-3 top-3 rounded bg-tomato px-2.5 py-1 font-heading text-[0.68rem] font-extrabold uppercase tracking-wider text-white">
             {p.badge}
           </span>
@@ -50,14 +57,16 @@ function ComboCard({ id }: { id: string }) {
 }
 
 export function Combos() {
-  const combos = site.products.filter((p) => p.category === 'combos');
+  const { products } = useCatalog();
+  const combos = products.filter((p) => p.category === 'combos');
+  if (combos.length === 0) return null;
   return (
     <section id="combos" className="bg-mustard px-5 py-20 md:py-28" aria-labelledby="combos-titulo">
       <div className="mx-auto max-w-7xl">
         <SectionHeading id="combos-titulo" title={site.texts.combos.title} subtitle={site.texts.combos.subtitle} brush="text-tomato" />
         <div className="mt-14 grid gap-7 md:grid-cols-3">
           {combos.map((c) => (
-            <ComboCard key={c.id} id={c.id} />
+            <ComboCard key={c.id} p={c} />
           ))}
         </div>
       </div>
