@@ -7,7 +7,7 @@ describe('SEO a partir da configuração', () => {
     const head = buildHead(site);
     expect(head).toContain('<meta name="robots" content="noindex, nofollow" />');
     expect(head).toContain(`<link rel="canonical" href="${site.seo.url}/" />`);
-    expect(head).toContain('og:image" content="https://brasa-burger.vercel.app/og-image.jpg"');
+    expect(head).toContain('og:image" content="https://brasa-burger-one.vercel.app/og-image.jpg"');
     expect(head).toContain('twitter:card" content="summary_large_image"');
   });
 

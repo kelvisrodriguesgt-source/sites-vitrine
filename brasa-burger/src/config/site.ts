@@ -24,7 +24,7 @@ export const site: SiteConfig = {
   },
 
   seo: {
-    url: 'https://brasa-burger.vercel.app',
+    url: 'https://brasa-burger-one.vercel.app',
     title: 'Brasa Burger | Hamburgueria artesanal em Cidade Exemplo - MT',
     description:
       'Hambúrguer artesanal feito na hora em Cidade Exemplo. Veja o cardápio, monte seu pedido e envie pelo WhatsApp. Site demonstrativo.',
