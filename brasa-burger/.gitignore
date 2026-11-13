@@ -3,3 +3,7 @@ dist
 dist-ssr
 *.local
 .vercel
+public/admin/decap-cms.js
+public/admin/*.decap-cms.js
+public/admin/*.wasm
+public/admin/seed.js

@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "kicker": "FEITO NA HORA. FEITO PARA VOCÊ.",
+    "title": "SEU PRÓXIMO HAMBÚRGUER FAVORITO ESTÁ AQUI.",
+    "highlight": "HAMBÚRGUER FAVORITO",
+    "subtitle": "Carne suculenta, ingredientes selecionados e aquele sabor que faz você querer repetir.",
+    "primary": "VER NOSSO CARDÁPIO",
+    "secondary": "PEDIR PELO WHATSAPP"
+  },
+  "highlights": {
+    "title": "FRESCO, QUENTE E IRRESISTÍVEL.",
+    "subtitle": "Cada detalhe importa. Do pão macio à carne preparada no ponto certo."
+  },
+  "menu": {
+    "title": "CARDÁPIO COMPLETO",
+    "subtitle": "Escolha por categoria, adicione ao pedido e envie pelo WhatsApp."
+  },
+  "experience": {
+    "title": "NÃO É SÓ UM HAMBÚRGUER. É UMA EXPERIÊNCIA.",
+    "subtitle": "O que faz a diferença na sua mesa."
+  },
+  "combos": {
+    "title": "SEU MOMENTO MERECE UM COMBO.",
+    "subtitle": "Hambúrguer, batata e bebida juntos, com um preço pensado para dividir ou aproveitar sozinho."
+  },
+  "story": {
+    "kicker": "NOSSA HISTÓRIA",
+    "title": "UMA PAIXÃO QUE VIROU SABOR.",
+    "text": "Acreditamos que um bom hambúrguer começa com bons ingredientes, cuidado no preparo e vontade de entregar algo especial. Por isso, cada pedido é preparado com atenção para proporcionar uma experiência que vai muito além da fome.",
+    "cta": "CONHEÇA NOSSO CARDÁPIO"
+  },
+  "instagram": {
+    "title": "ACOMPANHE NOSSA BRASA.",
+    "subtitle": "Novidades, lançamentos e momentos deliciosos.",
+    "cta": "VISITAR O INSTAGRAM"
+  },
+  "contact": {
+    "title": "VENHA NOS VISITAR",
+    "subtitle": "Peça pelo site, pelo WhatsApp ou venha comer no salão.",
+    "cta": "COMO CHEGAR"
+  },
+  "finalCta": {
+    "title": "DEU VONTADE? ENTÃO PEÇA!",
+    "subtitle": "Seu próximo hambúrguer está a poucos cliques de distância.",
+    "cta": "FAZER MEU PEDIDO"
+  },
+  "seoIntro": "A Brasa Burger é uma hamburgueria artesanal em Cidade Exemplo, com hambúrgueres preparados na hora, combos, porções e sobremesas. Peça para entrega ou retirada pelo WhatsApp."
+}

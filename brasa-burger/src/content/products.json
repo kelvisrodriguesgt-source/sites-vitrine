@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": "brasa-classic",
+      "name": "Brasa Classic",
+      "description": "Pão brioche, hambúrguer artesanal de 180g, queijo cheddar, alface, tomate e molho especial.",
+      "price": 32.9,
+      "category": "hamburgueres",
+      "image": "/img/classic.webp",
+      "imageAlt": "Hambúrguer Brasa Classic com queijo cheddar derretido, alface e tomate no pão brioche",
+      "featured": true,
+      "badge": "Mais pedido"
+    },
+    {
+      "id": "double-brasa",
+      "name": "Double Brasa",
+      "description": "Dois hambúrgueres de 120g, cheddar duplo, cebola caramelizada e molho da casa.",
+      "price": 39.9,
+      "category": "hamburgueres",
+      "image": "/img/double.webp",
+      "imageAlt": "Hambúrguer Double Brasa com dois hambúrgueres, cheddar duplo, alface e tomate",
+      "featured": true
+    },
+    {
+      "id": "bacon-supreme",
+      "name": "Bacon Supreme",
+      "description": "Hambúrguer artesanal de 180g, cheddar, bacon crocante, cebola crispy e molho especial.",
+      "price": 42.9,
+      "category": "hamburgueres",
+      "image": "/img/supreme.webp",
+      "imageAlt": "Hambúrguer artesanal com cheddar derretido, alface e tomate no pão brioche",
+      "featured": true,
+      "badge": "Novo"
+    },
+    {
+      "id": "cheddar-melt",
+      "name": "Cheddar Melt",
+      "description": "Hambúrguer artesanal de 150g, cheddar cremoso em dobro e maionese da casa no pão brioche.",
+      "price": 36.9,
+      "category": "hamburgueres",
+      "image": "/img/detalhe-queijo.webp",
+      "imageAlt": "Detalhe de queijo cheddar derretido sobre hambúrguer grelhado"
+    },
+    {
+      "id": "brasa-fresh",
+      "name": "Brasa Fresh",
+      "description": "Hambúrguer de 150g, queijo prato, alface americana, tomate e maionese da casa.",
+      "price": 31.9,
+      "category": "hamburgueres",
+      "image": "/img/detalhe-pao.webp",
+      "imageAlt": "Pão brioche com gergelim sobre alface fresca e molho"
+    },
+    {
+      "id": "combo-individual",
+      "name": "Combo Individual",
+      "description": "1 Brasa Classic + 1 batata frita pequena + 1 refrigerante lata.",
+      "price": 44.9,
+      "category": "combos",
+      "image": "/img/classic.webp",
+      "imageAlt": "Hambúrguer Brasa Classic, base do Combo Individual",
+      "badge": "Para 1 pessoa"
+    },
+    {
+      "id": "combo-casal",
+      "name": "Combo Casal",
+      "description": "2 Brasa Classic + 1 batata frita grande + 2 refrigerantes lata.",
+      "price": 84.9,
+      "category": "combos",
+      "image": "/img/double.webp",
+      "imageAlt": "Hambúrguer de dois andares, ilustrando o Combo Casal",
+      "badge": "Para 2 pessoas"
+    },
+    {
+      "id": "combo-familia",
+      "name": "Combo Família",
+      "description": "2 Brasa Classic + 2 Double Brasa + 2 batatas fritas grandes + 1 refrigerante 2L.",
+      "price": 159.9,
+      "category": "combos",
+      "image": "/img/hero.webp",
+      "imageAlt": "Hambúrguer Double Brasa sobre mesa de madeira, ilustrando o Combo Família",
+      "imagePosition": "object-[85%_50%]",
+      "badge": "Para 4 pessoas"
+    },
+    {
+      "id": "batata-frita",
+      "name": "Batata Frita",
+      "description": "Porção de batatas fritas crocantes, sequinhas e temperadas.",
+      "price": 18.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "onion-rings",
+      "name": "Onion Rings",
+      "description": "Anéis de cebola empanados e crocantes, acompanham molho da casa.",
+      "price": 21.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "batata-cheddar-bacon",
+      "name": "Batata Cheddar e Bacon",
+      "description": "Batatas fritas cobertas com cheddar cremoso e bacon crocante.",
+      "price": 27.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "refri-lata",
+      "name": "Refrigerante lata",
+      "description": "Lata 350ml, vários sabores.",
+      "price": 6.5,
+      "category": "bebidas"
+    },
+    {
+      "id": "suco",
+      "name": "Suco natural",
+      "description": "Copo de 400ml, sabores do dia.",
+      "price": 9.9,
+      "category": "bebidas"
+    },
+    {
+      "id": "milk-shake",
+      "name": "Milk-shake",
+      "description": "Copo de 400ml, sabores chocolate, morango ou baunilha.",
+      "price": 18.9,
+      "category": "bebidas"
+    },
+    {
+      "id": "agua",
+      "name": "Água mineral",
+      "description": "Garrafa 500ml, com ou sem gás.",
+      "price": 4.5,
+      "category": "bebidas"
+    },
+    {
+      "id": "brownie",
+      "name": "Brownie com sorvete",
+      "description": "Brownie de chocolate quentinho com bola de sorvete de creme.",
+      "price": 16.9,
+      "category": "sobremesas"
+    },
+    {
+      "id": "sundae",
+      "name": "Sundae",
+      "description": "Sorvete de creme com calda de chocolate ou morango.",
+      "price": 14.9,
+      "category": "sobremesas"
+    }
+  ]
+}

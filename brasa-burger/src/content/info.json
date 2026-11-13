@@ -1,0 +1,55 @@
+{
+  "brand": {
+    "name": "BRASA BURGER",
+    "tagline": "Feito na hora. Feito para você.",
+    "segment": "Hamburgueria artesanal",
+    "demo": true,
+    "demoNote": "Site demonstrativo. Nome, endereço, telefone, horários e preços são fictícios."
+  },
+  "contact": {
+    "whatsapp": "5500900000000",
+    "whatsappDisplay": "(00) 90000-0000",
+    "phone": "(00) 3000-0000",
+    "phoneTel": "+550030000000",
+    "instagramHandle": "@brasaburger.demo",
+    "instagramUrl": "https://www.instagram.com/brasaburger.demo/",
+    "greeting": "Olá! Vim pelo site da Brasa Burger e quero fazer um pedido."
+  },
+  "address": {
+    "street": "Rua das Brasas, 123",
+    "district": "Centro",
+    "city": "Cidade Exemplo",
+    "state": "MT",
+    "postalCode": "00000-000"
+  },
+  "hours": [
+    {
+      "label": "Segunda",
+      "time": "Fechado"
+    },
+    {
+      "label": "Terça a domingo",
+      "time": "18h às 23h30",
+      "days": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "18:00",
+      "closes": "23:30"
+    }
+  ],
+  "payments": [
+    "Pix",
+    "Cartão de crédito",
+    "Cartão de débito",
+    "Dinheiro"
+  ],
+  "order": {
+    "deliveryNote": "A taxa de entrega é informada pelo atendimento no WhatsApp.",
+    "sentNotice": "Abrimos o WhatsApp com o seu pedido. Ele só vale quando você envia a mensagem e o atendimento confirma."
+  }
+}
