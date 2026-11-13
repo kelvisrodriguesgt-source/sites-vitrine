@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-char font-sans text-char antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-mustard ring-offset-2 ring-offset-char;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-3 font-heading text-sm font-extrabold uppercase tracking-wide transition duration-200 ease-out active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply bg-mustard text-char shadow-[0_6px_0_0_#b87b00] hover:-translate-y-0.5 hover:bg-[#ffb921] active:translate-y-1 active:shadow-[0_2px_0_0_#b87b00];
+  }
+  .btn-tomato {
+    @apply bg-tomato text-white shadow-[0_6px_0_0_#a3300f] hover:-translate-y-0.5 hover:bg-[#f45a35] active:translate-y-1 active:shadow-[0_2px_0_0_#a3300f];
+  }
+  .btn-ghost {
+    @apply border-2 border-white/80 text-white hover:bg-white hover:text-char;
+  }
+  .btn-dark {
+    @apply bg-char text-white hover:bg-wine;
+  }
+  .section-title {
+    @apply font-display text-4xl uppercase leading-[1.02] tracking-wide sm:text-5xl lg:text-6xl;
+  }
+  .eyebrow {
+    @apply font-heading text-xs font-extrabold uppercase tracking-[0.22em];
+  }
+}
+
+/* Entrada discreta ao rolar. O hook só esconde o que está abaixo da dobra. */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.will-reveal.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 0.35s ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.toast-in,
+.fade-up {
+  animation: toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .will-reveal,
+  .will-reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pop,
+  .toast-in,
+  .fade-up {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

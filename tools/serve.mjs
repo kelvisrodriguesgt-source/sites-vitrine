@@ -14,7 +14,10 @@ const MIME = {
   '.xml': 'application/xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
-  '.woff2': 'font/woff2'
+  '.woff2': 'font/woff2',
+  '.woff': 'font/woff',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml'
 };
 
 export function loadHeaders(root) {
