@@ -1,10 +1,11 @@
 import { Clock, MapPin, Phone } from 'lucide-react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { directionsLink, scheduleLink } from '../lib/whatsapp';
 import { Eyebrow, PillButton, Rich, TextLink } from './ui';
 
 export function Contact() {
+  const site = useSite();
   const { address, hours, contact, texts, brand } = site;
   const t = texts.contact;
   const reveal = useReveal<HTMLDivElement>();

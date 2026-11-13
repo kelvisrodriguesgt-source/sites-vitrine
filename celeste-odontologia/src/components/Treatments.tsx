@@ -1,11 +1,12 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { treatmentLink } from '../lib/whatsapp';
 import { Eyebrow, Rich, TextLink } from './ui';
 
 export function Treatments() {
+  const site = useSite();
   const { treatments, texts, contact } = site;
   const t = texts.treatments;
   const reveal = useReveal<HTMLDivElement>();
@@ -57,7 +58,11 @@ export function Treatments() {
         <ul ref={track} onScroll={measure} className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory scroll-pl-5 gap-4 overflow-x-auto px-5 pb-2 sm:-mx-12 sm:scroll-pl-12 sm:px-12 lg:-mx-16 lg:scroll-pl-16 lg:px-16">
           {treatments.map((tr) => (
             <li key={tr.id} className="relative aspect-[3/4] w-[82%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-ocean sm:w-[46%] lg:w-[31%]">
-              <img src={tr.image} alt={tr.imageAlt} width={900} height={675} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+              {tr.image ? (
+                <img src={tr.image} alt={tr.imageAlt || tr.title} width={900} height={675} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-ocean to-navy" aria-hidden="true" />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-abyss/70 via-transparent to-transparent" aria-hidden="true" />
               <div className="glass absolute inset-x-3 bottom-3 p-5 sm:p-6">
                 <h3 className="font-title text-3xl">{tr.title}</h3>

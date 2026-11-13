@@ -22,7 +22,7 @@ import type { ReactNode } from 'react';
 import type { IconName } from '../config/types';
 import { parseRich } from '../lib/rich';
 
-const ICONS: Record<IconName, LucideIcon> = {
+export const ICONS: Record<IconName, LucideIcon> = {
   sparkles: Sparkles,
   implant: Gem,
   braces: Layers,

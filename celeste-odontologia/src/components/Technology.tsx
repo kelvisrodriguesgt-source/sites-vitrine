@@ -1,8 +1,9 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { Eyebrow, RingIcon, Rich } from './ui';
 
 export function Technology() {
+  const site = useSite();
   const { technology, texts, images } = site;
   const t = texts.technology;
   const reveal = useReveal<HTMLDivElement>();

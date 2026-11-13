@@ -1,8 +1,9 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { Eyebrow, Rich } from './ui';
 
 export function Steps() {
+  const site = useSite();
   const { steps, texts } = site;
   const t = texts.steps;
   const reveal = useReveal<HTMLDivElement>();

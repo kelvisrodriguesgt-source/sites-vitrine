@@ -12,7 +12,7 @@ npm install
 npm run dev        # desenvolvimento (site em /, painel em /admin)
 npm run build      # typecheck + build + pré-renderização
 npm test           # Vitest: link do WhatsApp, SEO gerado, dados da configuração
-npm run qa         # após o build: Playwright em 1366 e 390 px, menu, botões, imagens, SEO e /admin (screenshots em ./qa-out)
+npm run qa         # após o build: Playwright em 1366 e 390 px, menu, botões, imagens, SEO e painel /admin (login, navegação, edição refletida no site; screenshots em ./qa-out)
 ```
 
 O `npm run qa` usa o Playwright instalado na raiz do repositório `sites-vitrine`. Se o Chromium estiver em outro caminho: `CHROMIUM_PATH=/caminho/chrome npm run qa`.
@@ -48,18 +48,21 @@ O `npm run qa` usa o Playwright instalado na raiz do repositório `sites-vitrine
 
 Sem promessa de resultado, sem "garantimos", sem antes e depois, sem preços, sem diagnóstico e sem depoimentos ou avaliações inventadas. O Schema é `Dentist`, sem `aggregateRating`.
 
-## Painel /admin (Decap CMS)
+## Painel /admin (painel próprio)
 
-Está em **modo demonstração** (`test-repo`): abre, lista os mesmos arquivos de `src/content/` e permite editar, mas nada é salvo nem publicado. Serve para mostrar ao cliente como seria editar.
+Painel em português simples, nas cores do site, feito para quem não é da área: tela inicial com "O que você quer mudar hoje?", checklist "Para o site ficar pronto", e áreas para **Tratamentos** (adicionar, remover, reordenar, trocar foto), **Fotos do site**, **Contato e horários** (WhatsApp, endereço, mapa), **Equipe**, **Perguntas frequentes**, **Textos do site** e **Números e diferenciais**. Cada área tem barra "Salvar alterações", aviso de confirmação, "Voltar ao original" e validações (WhatsApp, link do mapa, tamanho das fotos).
 
-### Ativar a edição real
+**Modo demonstração:** a senha é `celeste123` (fica no código, não protege nada) e tudo é salvo no `localStorage` do navegador. O site e o painel, abertos no mesmo navegador, se atualizam na hora. Serve para mostrar ao cliente como seria editar; as alterações não valem para outros visitantes.
 
-1. Em `public/admin/config.yml`, apague o bloco `backend: test-repo` e descomente o bloco `github` (repositório `kelvisrodriguesgt-source/sites-vitrine`, branch `main`).
-2. Configure um login OAuth do GitHub para o Decap (por exemplo, um serviço de autenticação próprio e `base_url` no `config.yml`). O cliente precisa de uma conta no GitHub com acesso de escrita ao repositório.
-3. Cada salvar vira um commit; a Vercel publica sozinha.
+Código: `src/admin/` (telas), `src/shared/content.ts` (leitura, validação e gravação do conteúdo editado), `src/context/SiteContext.tsx` (o site lê o conteúdo salvo). Páginas em `admin/index.html` (build com várias páginas no Vite).
 
-Alternativa mais simples para o cliente: um painel próprio com login e banco de dados, como o do Brasa Burger.
+### Passar para edição real (cliente fechado)
+
+1. Trocar `src/shared/storage.ts`/`content.ts` por chamadas a uma API própria (por exemplo, banco de dados com a mesma estrutura dos arquivos de `src/content/`).
+2. Trocar o login de demonstração (`src/admin/config.ts`) por autenticação de verdade, com sessão no servidor.
+3. Servir as fotos enviadas de um armazenamento (hoje elas são reduzidas e guardadas como WebP no navegador).
+4. O mesmo conteúdo continua podendo ser editado diretamente em `src/content/*.json`.
 
 ## Segurança
 
-`vercel.json` aplica CSP estrita (sem scripts nem estilos inline no site), `X-Frame-Options`, HSTS, `Referrer-Policy`, `Permissions-Policy` e `X-Robots-Tag: noindex` (protótipo). O `/admin` tem uma regra própria, mais flexível porque o Decap precisa. `public/.well-known/security.txt` indica o contato de segurança.
+`vercel.json` aplica CSP estrita (sem scripts nem estilos inline no site), `X-Frame-Options`, HSTS, `Referrer-Policy`, `Permissions-Policy` e `X-Robots-Tag: noindex` (protótipo). O `/admin` usa a mesma CSP estrita (o painel não usa estilos nem scripts inline). `public/.well-known/security.txt` indica o contato de segurança.

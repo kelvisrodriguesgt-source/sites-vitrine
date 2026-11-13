@@ -1,4 +1,4 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { Logo } from './ui';
 
 const LINKS = [
@@ -10,6 +10,7 @@ const LINKS = [
 ];
 
 export function Footer() {
+  const site = useSite();
   const { brand, address, contact, hours } = site;
   return (
     <footer className="px-5 pb-28 pt-14 text-white sm:px-12 lg:px-16">

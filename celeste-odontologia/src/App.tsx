@@ -11,10 +11,11 @@ import { Steps } from './components/Steps';
 import { Team } from './components/Team';
 import { Technology } from './components/Technology';
 import { Treatments } from './components/Treatments';
+import { SiteProvider } from './context/SiteContext';
 
 export function App() {
   return (
-    <>
+    <SiteProvider>
       <a
         href="#conteudo"
         className="sr-only z-[70] rounded-full bg-champagne px-5 py-3 text-navy focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -36,6 +37,6 @@ export function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
-    </>
+    </SiteProvider>
   );
 }

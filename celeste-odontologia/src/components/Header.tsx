@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useScrolled } from '../hooks/useScrolled';
 import { scheduleLink } from '../lib/whatsapp';
 import { Dialog } from './Dialog';
@@ -15,6 +15,7 @@ const NAV = [
 ];
 
 export function Header() {
+  const site = useSite();
   const scrolled = useScrolled();
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);

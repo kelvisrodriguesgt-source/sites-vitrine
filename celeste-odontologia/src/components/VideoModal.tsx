@@ -1,9 +1,9 @@
 import { X } from 'lucide-react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { Dialog } from './Dialog';
 
 export function VideoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { images, texts } = site;
+  const { images, texts } = useSite();
   return (
     <Dialog open={open} onClose={onClose} label={texts.hero.videoLabel} className="m-auto w-[min(92vw,960px)]" backdropClassName="bg-abyss/80">
       <div className="plate bg-navy">

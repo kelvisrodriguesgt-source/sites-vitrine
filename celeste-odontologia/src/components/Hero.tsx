@@ -1,11 +1,12 @@
 import { Play } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { scheduleLink } from '../lib/whatsapp';
 import { Eyebrow, PillButton, Rich, TextLink } from './ui';
 import { VideoModal } from './VideoModal';
 
 export function Hero() {
+  const site = useSite();
   const { texts, images } = site;
   const t = texts.hero;
   const [video, setVideo] = useState(false);

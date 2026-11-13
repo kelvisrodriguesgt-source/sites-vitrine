@@ -184,3 +184,36 @@ export interface SiteConfig {
   images: Images;
   texts: Texts;
 }
+
+/** Conteúdo editável: um objeto por arquivo de src/content (e por área do painel). */
+export interface InfoFile {
+  brand: Brand;
+  contact: Contact;
+  address: Address;
+  hours: HoursRow[];
+  images: Images;
+}
+export interface TreatmentsFile {
+  treatments: Treatment[];
+}
+export interface DifferentialsFile {
+  differentials: Differential[];
+  highlights: Highlight[];
+  technology: TechItem[];
+  steps: Step[];
+}
+export interface TeamFile {
+  team: TeamMember[];
+}
+export interface FaqFile {
+  faq: FaqItem[];
+}
+export interface Content {
+  info: InfoFile;
+  texts: Texts;
+  treatments: TreatmentsFile;
+  differentials: DifferentialsFile;
+  team: TeamFile;
+  faq: FaqFile;
+}
+export type ContentFile = keyof Content;

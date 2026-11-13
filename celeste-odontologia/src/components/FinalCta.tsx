@@ -1,9 +1,10 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { scheduleLink } from '../lib/whatsapp';
 import { PillButton, Rich } from './ui';
 
 export function FinalCta() {
+  const site = useSite();
   const { texts, images, contact } = site;
   const t = texts.finalCta;
   const reveal = useReveal<HTMLDivElement>();

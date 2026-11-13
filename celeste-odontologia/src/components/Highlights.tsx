@@ -1,9 +1,10 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { scheduleLink } from '../lib/whatsapp';
 import { PillButton } from './ui';
 
 export function Highlights() {
+  const site = useSite();
   const { highlights, texts, contact } = site;
   const t = texts.highlights;
   const reveal = useReveal<HTMLDivElement>();

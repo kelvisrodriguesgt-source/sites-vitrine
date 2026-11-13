@@ -1,8 +1,9 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { Eyebrow, RingIcon, Rich } from './ui';
 
 export function Clinic() {
+  const site = useSite();
   const { differentials, texts, images } = site;
   const t = texts.clinic;
   const reveal = useReveal<HTMLDivElement>();

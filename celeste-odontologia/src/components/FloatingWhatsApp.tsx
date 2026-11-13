@@ -1,8 +1,9 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { scheduleLink } from '../lib/whatsapp';
 import { WhatsAppIcon } from './ui';
 
 export function FloatingWhatsApp() {
+  const site = useSite();
   return (
     <a
       href={scheduleLink(site.contact)}

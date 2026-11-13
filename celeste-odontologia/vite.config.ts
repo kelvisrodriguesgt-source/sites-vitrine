@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 import { site } from './src/config/site';
 import { buildHead, buildLlms, buildRobots, buildSitemap } from './src/lib/seo';
@@ -18,5 +19,10 @@ function seoFromConfig(): Plugin {
 
 export default defineConfig({
   plugins: [react(), seoFromConfig()],
-  build: { target: 'es2022', cssCodeSplit: false, assetsInlineLimit: 0 }
+  build: {
+    target: 'es2022',
+    assetsInlineLimit: 0,
+    // Duas páginas: o site (index.html) e o painel (/admin), cada uma com o próprio CSS.
+    rollupOptions: { input: { main: resolve(__dirname, 'index.html'), admin: resolve(__dirname, 'admin/index.html') } }
+  }
 });

@@ -4,15 +4,16 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Site demonstrativo de clínica odontológica premium (React + TypeScript + Tailwind), personalizável por src/config/site.ts",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "node scripts/prepare-admin.mjs && vite",
+    "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "build": "node scripts/prepare-admin.mjs && tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "test": "vitest run",
-    "qa": "node scripts/qa.mjs",
-    "prepare:admin": "node scripts/prepare-admin.mjs"
+    "qa": "node scripts/qa.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.3.0",
@@ -27,7 +28,6 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.6.2",
-    "decap-cms": "^3.17.3",
     "postcss": "^8.5.32",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",

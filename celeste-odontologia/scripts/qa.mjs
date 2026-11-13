@@ -166,7 +166,7 @@ for (const [label, viewport, mobile] of [['desktop-1366', { width: 1366, height:
   const ld = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
   check('JSON-LD Dentist', ld['@type'] === 'Dentist' && !ld.aggregateRating);
   check('sem atributos style inline no HTML', !/\sstyle="/.test(readFileSync(join(dist, 'index.html'), 'utf8')));
-  for (const f of ['robots.txt', 'sitemap.xml', 'llms.txt', '.well-known/security.txt', 'og-image.jpg', 'favicon.svg', 'admin/config.yml']) {
+  for (const f of ['robots.txt', 'sitemap.xml', 'llms.txt', '.well-known/security.txt', 'og-image.jpg', 'favicon.svg', 'admin']) {
     check(`arquivo /${f}`, (await page.request.get(`${base}/${f}`)).ok());
   }
   const robots = await (await page.request.get(`${base}/robots.txt`)).text();
@@ -174,23 +174,75 @@ for (const [label, viewport, mobile] of [['desktop-1366', { width: 1366, height:
   await ctx.close();
 }
 
-// painel /admin (Decap, modo demonstração)
-{
-  const { ctx, page } = await open({ width: 1366, height: 800 });
+// painel /admin (painel próprio, modo demonstração)
+for (const [label, viewport, mobile] of [['desktop', { width: 1366, height: 800 }, false], ['mobile', { width: 390, height: 844 }, true]]) {
+  const { ctx, page, problems } = await open(viewport, mobile);
   await page.goto(`${base}/admin`, { waitUntil: 'load' });
-  const login = page.getByRole('button', { name: /entrar|login/i });
-  await login.waitFor({ timeout: 20000 }).catch(() => {});
-  check('admin: tela de login do Decap', (await login.count()) > 0);
-  if ((await login.count()) > 0) {
-    await login.click();
-    await page.getByText('Dados da clínica').first().waitFor({ timeout: 20000 }).catch(() => {});
-    check('admin: arquivos de conteúdo listados', (await page.getByText('Dados da clínica').count()) > 0 && (await page.getByText('Equipe').count()) > 0);
-    await page.getByText('Equipe').first().click().catch(() => {});
-    await page.waitForTimeout(1500);
-    check('admin: formulário da equipe abre com dados', (await page.getByText('Dra. Helena Duarte').count()) > 0 || (await page.locator('input').count()) > 0);
-    await page.screenshot({ path: join(out, 'admin.png') });
+  const pass0 = page.locator('#senha');
+  await pass0.waitFor({ timeout: 10000 }).catch(() => {});
+  check(`admin ${label}: tela de login`, (await pass0.count()) > 0);
+  await page.screenshot({ path: join(out, `admin-login-${label}.png`) });
+  await pass0.fill('errada');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  check(`admin ${label}: senha errada mostra erro`, (await page.getByText('Senha incorreta').count()) > 0);
+  await pass0.fill('celeste123');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByText('O que você quer mudar hoje?').waitFor({ timeout: 10000 }).catch(() => {});
+  check(`admin ${label}: entra com a senha de demonstração`, (await page.getByText('O que você quer mudar hoje?').count()) > 0);
+  check(`admin ${label}: noindex`, (await page.locator('meta[name="robots"]').getAttribute('content')) === 'noindex, nofollow');
+  await page.screenshot({ path: join(out, `admin-inicio-${label}.png`), fullPage: true });
+
+  for (const route of ['tratamentos', 'fotos', 'contato', 'equipe', 'perguntas', 'textos', 'numeros', 'inicio']) {
+    await page.evaluate((r) => { location.hash = `#/${r}`; }, route);
+    await page.waitForTimeout(250);
+    check(`admin ${label}: página ${route} abre`, (await page.locator('main h1').count()) > 0, await page.locator('main').innerText().then((t) => t.slice(0, 60)).catch(() => ''));
+    if (route !== 'inicio') await page.screenshot({ path: join(out, `admin-${route}-${label}.png`), fullPage: true });
   }
-  check('admin: noindex', (await page.locator('meta[name="robots"]').getAttribute('content')) === 'noindex, nofollow');
+
+  if (label === 'desktop') {
+    // editar o WhatsApp e conferir no site, no mesmo navegador
+    await page.evaluate(() => { location.hash = '#/contato'; });
+    const wa = page.getByLabel(/WhatsApp que recebe/);
+    await wa.waitFor({ timeout: 5000 }).catch(() => {});
+    await wa.fill('65 98888-7777');
+    check('admin: barra de salvar aparece ao editar', (await page.getByText('Você tem alterações para salvar.').count()) > 0);
+    await page.getByRole('button', { name: 'Salvar alterações' }).click();
+    await page.getByText('Já aparece no site').first().waitFor({ timeout: 5000 }).catch(() => {});
+    check('admin: salvar mostra aviso de confirmação', (await page.getByText('Já aparece no site').count()) > 0);
+    const site = await ctx.newPage();
+    await site.goto(base, { waitUntil: 'load' });
+    await site.waitForTimeout(500);
+    const hrefs = await site.locator('a[href*="wa.me"]').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+    check('site reflete o novo WhatsApp', hrefs.length > 0 && hrefs.every((h) => h.includes('5565988887777')), hrefs[0] ?? 'sem links');
+
+    // editar um texto do site
+    await page.evaluate(() => { location.hash = '#/textos'; });
+    const topo = page.getByRole('button', { name: /Topo do site/ });
+    if ((await topo.getAttribute('aria-expanded')) !== 'true') await topo.click();
+    const sub = page.getByLabel('Frase abaixo do título');
+    await sub.waitFor({ timeout: 5000 }).catch(() => {});
+    await sub.fill('Frase editada pelo painel.');
+    await page.getByRole('button', { name: 'Salvar alterações' }).click();
+    await page.waitForTimeout(300);
+    await site.reload({ waitUntil: 'load' });
+    await site.waitForTimeout(500);
+    check('site reflete o texto editado', (await site.getByText('Frase editada pelo painel.').count()) > 0);
+
+    // voltar tudo ao padrão
+    await page.evaluate(() => { location.hash = '#/inicio'; });
+    await page.getByRole('button', { name: 'Voltar tudo ao padrão' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: 'Voltar ao padrão' }).click();
+    await page.waitForTimeout(300);
+    await site.reload({ waitUntil: 'load' });
+    await site.waitForTimeout(500);
+    check('voltar ao padrão restaura o site', (await site.getByText('Frase editada pelo painel.').count()) === 0);
+    await site.close();
+
+    // sair
+    await page.getByRole('button', { name: 'Sair' }).click();
+    check('admin: sair volta ao login', (await page.locator('#senha').count()) > 0);
+  }
+  check(`admin ${label}: sem erros no console`, problems.length === 0, problems.join(' | '));
   await ctx.close();
 }
 

@@ -1,4 +1,4 @@
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { Eyebrow, Rich } from './ui';
 
@@ -12,6 +12,7 @@ const initials = (name: string): string =>
     .join('');
 
 export function Team() {
+  const site = useSite();
   const { team, texts } = site;
   const t = texts.team;
   const reveal = useReveal<HTMLDivElement>();

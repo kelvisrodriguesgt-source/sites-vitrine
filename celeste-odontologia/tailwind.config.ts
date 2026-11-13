@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import { site } from './src/config/site';
 
 export default {
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  content: ['./index.html', './src/**/*.{ts,tsx}', '!./src/admin/**'],
   theme: {
     extend: {
       colors: { ...site.colors, abyss: '#08192B' },

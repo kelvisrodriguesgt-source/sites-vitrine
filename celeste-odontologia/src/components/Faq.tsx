@@ -1,10 +1,11 @@
 import { Minus, Plus } from 'lucide-react';
 import { useState } from 'react';
-import { site } from '../config/site';
+import { useSite } from '../context/SiteContext';
 import { useReveal } from '../hooks/useReveal';
 import { Eyebrow, Rich } from './ui';
 
 export function Faq() {
+  const site = useSite();
   const { faq, texts } = site;
   const t = texts.faq;
   const reveal = useReveal<HTMLDivElement>();
