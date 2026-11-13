@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink font-sans text-snow antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ember ring-offset-2 ring-offset-ink;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wide transition duration-200 ease-out hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+  }
+  .btn-red {
+    @apply bg-red text-snow hover:bg-[#c62d2a];
+  }
+  .btn-outline {
+    @apply border border-line bg-transparent text-snow hover:border-snow;
+  }
+  .btn-whats {
+    @apply bg-[#178a47] text-snow hover:bg-[#127a3e];
+  }
+  .title-display {
+    @apply font-display font-extrabold leading-[1.02] tracking-tight;
+  }
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.22em] text-ember;
+  }
+  .field {
+    @apply mt-1.5 block min-h-12 w-full rounded-xl border border-line bg-card px-3.5 py-3 text-base text-snow placeholder:text-ash/70 focus:border-ember focus:outline-none focus:ring-2 focus:ring-ember;
+  }
+}
+
+/* Pepperonis do topo: o contêiner recebe o deslocamento do scroll (--py), a imagem flutua sozinha. */
+.parallax {
+  translate: 0 calc(var(--py, 0) * 1px);
+  will-change: translate;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 8deg));
+  }
+}
+.float {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.seal-spin {
+  animation: seal-spin 24s linear infinite;
+}
+
+/* Entrada discreta ao rolar. O hook só esconde o que está abaixo da dobra. */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.will-reveal.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 0.35s ease-out;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.toast-in,
+.fade-up {
+  animation: toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Sem barra de rolagem visível nos chips (continuam rolando). */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .parallax {
+    translate: none;
+    will-change: auto;
+  }
+  .float,
+  .seal-spin,
+  .pop,
+  .toast-in,
+  .fade-up,
+  .shake {
+    animation: none;
+  }
+  .will-reveal,
+  .will-reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -100,6 +100,24 @@ jobs:
       - run: npm test
       - run: npm run build
 
+  forno-nero:
+    name: Forno Nero (tipos, testes e build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: forno-nero
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: forno-nero/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
   mutation:
     name: Testes de mutação (Stryker)
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

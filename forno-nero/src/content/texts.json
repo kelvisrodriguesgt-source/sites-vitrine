@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "title": "Pizza\ne muito mais!",
+    "srTitle": "Pizzaria delivery em Cidade Exemplo - Forno Nero",
+    "primary": "Ver cardápio"
+  },
+  "promoHeroText": "Peça até as 19h e ganhe borda recheada grátis.",
+  "game": {
+    "seal": "Jogar",
+    "text": "Criamos um minijogo para você se divertir enquanto a pizza chega.",
+    "title": "Pegue o pepperoni",
+    "start": "Começar",
+    "again": "Jogar de novo",
+    "instruction": "Mova a caixa de pizza com o mouse ou o dedo e pegue os pepperonis que caem. Você tem 30 segundos.",
+    "recordLabel": "Recorde",
+    "close": "Fechar jogo"
+  },
+  "menu": {
+    "title": "Cardápio",
+    "subtitle": "Escolha o tamanho, monte seu pedido e envie pelo WhatsApp.",
+    "searchPlaceholder": "Busque um sabor",
+    "searchButton": "Buscar",
+    "expand": "Ver todo o cardápio",
+    "empty": "Nenhum item encontrado. Tente outro sabor ou ingrediente.",
+    "halfCta": "Meio a meio",
+    "halfText": "Quer dois sabores na mesma pizza? Monte a sua metade a metade."
+  },
+  "promos": {
+    "title": "Promoções",
+    "subtitle": "Combos para pedir sem pensar. Valores demonstrativos.",
+    "items": [
+      {
+        "id": "familia",
+        "title": "Combo Família",
+        "text": "2 pizzas grandes + refrigerante 2 L",
+        "productId": "combo-familia",
+        "cta": "Pedir combo"
+      },
+      {
+        "id": "casal",
+        "title": "Combo Casal",
+        "text": "1 pizza média + 2 refrigerantes",
+        "productId": "combo-casal",
+        "cta": "Pedir combo"
+      },
+      {
+        "id": "esfihas",
+        "title": "10 esfihas variadas",
+        "text": "Para dividir em qualquer hora",
+        "productId": "combo-esfihas",
+        "cta": "Pedir combo"
+      }
+    ]
+  },
+  "reviews": {
+    "title": "Avaliações",
+    "subtitle": "O que os clientes dizem sobre a gente.",
+    "empty": "Avaliações do Google aparecem aqui",
+    "cta": "Ver avaliações no Google"
+  },
+  "delivery": {
+    "title": "Entrega e contato",
+    "subtitle": "Do pedido à porta de casa em três passos.",
+    "steps": [
+      {
+        "title": "Escolha",
+        "text": "Monte o pedido no site: tamanhos, sabores e bebidas."
+      },
+      {
+        "title": "Envie",
+        "text": "Um toque abre o WhatsApp com o pedido organizado."
+      },
+      {
+        "title": "Receba",
+        "text": "O atendimento confirma e informa a taxa de entrega."
+      }
+    ]
+  },
+  "seoIntro": "Pizzaria delivery em Cidade Exemplo - MT: pizzas, esfihas, calzones, porções e bebidas. Escolha o tamanho, monte o pedido no site e envie pelo WhatsApp."
+}

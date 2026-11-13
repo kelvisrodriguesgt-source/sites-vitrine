@@ -1,0 +1,324 @@
+{
+  "products": [
+    {
+      "id": "margherita",
+      "name": "Margherita",
+      "description": "Molho de tomate, mozzarella, tomate fatiado e manjericão fresco.",
+      "price": 34.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 34.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 49.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 64.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/margherita.webp",
+      "imageAlt": "Pizza Margherita vista de cima"
+    },
+    {
+      "id": "calabresa",
+      "name": "Calabresa",
+      "description": "Calabresa fatiada, cebola, mozzarella e orégano.",
+      "price": 36.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 36.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 52.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 67.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/calabresa.webp",
+      "imageAlt": "Pizza Calabresa vista de cima"
+    },
+    {
+      "id": "frango-catupiry",
+      "name": "Frango com Catupiry",
+      "description": "Frango desfiado temperado, catupiry cremoso e mozzarella.",
+      "price": 38.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 38.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 54.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 69.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/frango-catupiry.webp",
+      "imageAlt": "Pizza Frango com Catupiry vista de cima"
+    },
+    {
+      "id": "portuguesa",
+      "name": "Portuguesa",
+      "description": "Presunto, ovos, cebola, azeitona, mozzarella e orégano.",
+      "price": 39.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 39.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 56.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 72.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/portuguesa.webp",
+      "imageAlt": "Pizza Portuguesa vista de cima"
+    },
+    {
+      "id": "quatro-queijos",
+      "name": "Quatro Queijos",
+      "description": "Mozzarella, provolone, parmesão e gorgonzola.",
+      "price": 41.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 41.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 58.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 74.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/quatro-queijos.webp",
+      "imageAlt": "Pizza Quatro Queijos vista de cima"
+    },
+    {
+      "id": "pepperoni",
+      "name": "Pepperoni",
+      "description": "Fatias de pepperoni, mozzarella e um toque de orégano.",
+      "price": 42.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 42.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 59.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 76.9
+        }
+      ],
+      "category": "pizzas",
+      "image": "/img/pepperoni.webp",
+      "imageAlt": "Pizza Pepperoni vista de cima",
+      "badge": "Mais pedida"
+    },
+    {
+      "id": "chocolate-morango",
+      "name": "Chocolate com Morango",
+      "description": "Chocolate ao leite derretido e morangos frescos.",
+      "price": 36.9,
+      "sizes": [
+        {
+          "id": "P",
+          "label": "Pequena",
+          "slices": 4,
+          "price": 36.9
+        },
+        {
+          "id": "M",
+          "label": "Média",
+          "slices": 6,
+          "price": 52.9
+        },
+        {
+          "id": "G",
+          "label": "Grande",
+          "slices": 8,
+          "price": 66.9
+        }
+      ],
+      "category": "doces",
+      "image": "/img/chocolate-morango.webp",
+      "imageAlt": "Pizza Chocolate com Morango vista de cima",
+      "badge": "Nova"
+    },
+    {
+      "id": "esfiha-carne",
+      "name": "Esfiha de carne",
+      "description": "Carne moída temperada, tomate e cebola.",
+      "price": 7.5,
+      "category": "esfihas"
+    },
+    {
+      "id": "esfiha-queijo",
+      "name": "Esfiha de queijo",
+      "description": "Mozzarella derretida em massa macia.",
+      "price": 7.5,
+      "category": "esfihas"
+    },
+    {
+      "id": "esfiha-frango",
+      "name": "Esfiha de frango",
+      "description": "Frango desfiado com catupiry.",
+      "price": 8.0,
+      "category": "esfihas"
+    },
+    {
+      "id": "calzone-calabresa",
+      "name": "Calzone de calabresa",
+      "description": "Calabresa, mozzarella e cebola dentro da massa assada.",
+      "price": 29.9,
+      "category": "calzones"
+    },
+    {
+      "id": "calzone-frango",
+      "name": "Calzone de frango",
+      "description": "Frango desfiado, catupiry e mozzarella.",
+      "price": 31.9,
+      "category": "calzones"
+    },
+    {
+      "id": "batata-frita",
+      "name": "Batata frita",
+      "description": "Porção crocante, ideal para dividir.",
+      "price": 24.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "pao-de-alho",
+      "name": "Pão de alho",
+      "description": "Seis fatias com manteiga de alho e queijo gratinado.",
+      "price": 18.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "aneis-de-cebola",
+      "name": "Anéis de cebola",
+      "description": "Empanados e sequinhos, com molho da casa.",
+      "price": 22.9,
+      "category": "porcoes"
+    },
+    {
+      "id": "refrigerante-lata",
+      "name": "Refrigerante lata 350 ml",
+      "description": "Consulte os sabores disponíveis.",
+      "price": 6.0,
+      "category": "bebidas"
+    },
+    {
+      "id": "refrigerante-2l",
+      "name": "Refrigerante 2 L",
+      "description": "Consulte os sabores disponíveis.",
+      "price": 14.0,
+      "category": "bebidas"
+    },
+    {
+      "id": "agua-mineral",
+      "name": "Água mineral 500 ml",
+      "description": "Sem gás.",
+      "price": 4.0,
+      "category": "bebidas"
+    },
+    {
+      "id": "brownie-sorvete",
+      "name": "Brownie com sorvete",
+      "description": "Brownie quente de chocolate com bola de sorvete de creme.",
+      "price": 19.9,
+      "category": "sobremesas"
+    },
+    {
+      "id": "petit-gateau",
+      "name": "Petit gâteau",
+      "description": "Bolinho de chocolate com recheio cremoso.",
+      "price": 22.9,
+      "category": "sobremesas"
+    },
+    {
+      "id": "combo-familia",
+      "name": "Combo Família",
+      "description": "2 pizzas grandes (sabores à escolha no WhatsApp) + refrigerante 2 L.",
+      "price": 139.9,
+      "category": "combos",
+      "badge": "Combo"
+    },
+    {
+      "id": "combo-casal",
+      "name": "Combo Casal",
+      "description": "1 pizza média (sabor à escolha no WhatsApp) + 2 refrigerantes lata.",
+      "price": 62.9,
+      "category": "combos",
+      "badge": "Combo"
+    },
+    {
+      "id": "combo-esfihas",
+      "name": "Combo 10 esfihas",
+      "description": "10 esfihas variadas (sabores à escolha no WhatsApp).",
+      "price": 59.9,
+      "category": "combos",
+      "badge": "Combo"
+    }
+  ]
+}

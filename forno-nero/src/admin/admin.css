@@ -1,0 +1,109 @@
+@config "../../tailwind.admin.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ember ring-offset-2 ring-offset-paper;
+  }
+  button,
+  [role='button'],
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-weight: 800;
+  }
+  .a-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-heading text-sm font-bold transition duration-150 ease-out active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .a-btn-primary {
+    @apply bg-red text-white hover:bg-[#c62d2a];
+  }
+  .a-btn-dark {
+    @apply bg-ink text-white hover:bg-coal;
+  }
+  .a-btn-ghost {
+    @apply border border-ink/20 bg-white text-ink hover:border-ink/40 hover:bg-ink/5;
+  }
+  .a-btn-danger {
+    @apply bg-danger text-white hover:bg-[#d93a2a];
+  }
+  .a-icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink/65 transition hover:bg-ink/10 hover:text-ink active:scale-95;
+  }
+  .a-card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+  .a-input {
+    @apply block min-h-11 w-full rounded-lg border border-ink/20 bg-white px-3.5 py-2.5 text-base text-ink placeholder:text-ink/40 focus:border-red focus:outline-none focus:ring-2 focus:ring-ember;
+  }
+  .a-label {
+    @apply block font-heading text-xs font-extrabold uppercase tracking-wider text-ink/70;
+  }
+  .a-chip {
+    @apply inline-flex min-h-10 items-center gap-1.5 whitespace-nowrap rounded-full border px-4 font-heading text-sm font-bold transition;
+  }
+  .a-chip-on {
+    @apply border-ink bg-ink text-white;
+  }
+  .a-chip-off {
+    @apply border-ink/20 bg-white text-ink/80 hover:border-ink/50;
+  }
+}
+
+@keyframes a-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes a-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+@keyframes a-slide {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+@keyframes a-rise {
+  from {
+    transform: translateY(100%);
+  }
+}
+.a-fade {
+  animation: a-fade 0.2s ease-out;
+}
+.a-pop {
+  animation: a-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.a-slide {
+  animation: a-slide 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.a-rise {
+  animation: a-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .a-fade,
+  .a-pop,
+  .a-slide,
+  .a-rise {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

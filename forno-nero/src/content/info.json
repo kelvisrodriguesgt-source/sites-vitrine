@@ -1,0 +1,39 @@
+{
+  "brand": {
+    "name": "FORNO NERO",
+    "tagline": "Pizza quente, do forno para a sua porta.",
+    "segment": "Pizzaria delivery",
+    "demo": true,
+    "demoNote": "Site demonstrativo — Grupo KR. Nome, contatos, preços e promoções são fictícios."
+  },
+  "contact": {
+    "whatsapp": "5565999034981",
+    "whatsappDisplay": "(65) 99903-4981",
+    "phone": "(00) 3000-0000",
+    "phoneTel": "+550030000000",
+    "instagramHandle": "@fornonero.demo",
+    "instagramUrl": "https://www.instagram.com/fornonero.demo/",
+    "greeting": "Olá! Vim pelo site da Forno Nero e quero fazer um pedido."
+  },
+  "address": {
+    "street": "Rua do Forno, 456",
+    "district": "Centro",
+    "city": "Cidade Exemplo",
+    "state": "MT",
+    "postalCode": "00000-000"
+  },
+  "hours": [
+    {
+      "label": "Todos os dias",
+      "time": "18h às 23h30",
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "18:00",
+      "closes": "23:30"
+    }
+  ],
+  "payments": ["Pix", "Cartão de crédito", "Cartão de débito", "Dinheiro"],
+  "order": {
+    "deliveryNote": "A taxa de entrega é informada pelo atendimento no WhatsApp.",
+    "sentNotice": "O pedido só vale quando você envia a mensagem e o atendimento confirma."
+  }
+}
