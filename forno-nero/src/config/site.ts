@@ -26,7 +26,7 @@ export const site: SiteConfig = {
   },
 
   seo: {
-    url: 'https://forno-nero.vercel.app',
+    url: 'https://forno-nero-self.vercel.app',
     title: 'Forno Nero Pizzaria | Pizzaria delivery em Cidade Exemplo - MT',
     description:
       'Pizzas, esfihas, calzones e porções com entrega em Cidade Exemplo. Veja o cardápio, monte o pedido e envie pelo WhatsApp. Site demonstrativo.',
