@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-abyss font-sans text-navy antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-champagne ring-offset-2 ring-offset-abyss;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .font-title {
+    @apply font-serif font-medium leading-[1.02] tracking-tight;
+    font-variant-numeric: lining-nums;
+  }
+  .eyebrow {
+    @apply font-sans text-[0.7rem] font-medium uppercase tracking-eyebrow;
+  }
+  .plate {
+    @apply relative overflow-hidden rounded-[28px] sm:rounded-[32px];
+  }
+
+  /* Vidro: desfoque do que está atrás. Sem backdrop-filter, cai para azul-marinho sólido. */
+  .glass {
+    background: rgb(255 255 255 / 0.1);
+    border: 1px solid rgb(255 255 255 / 0.2);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    color: #fff;
+  }
+  .glass-strong {
+    background: rgb(255 255 255 / 0.14);
+  }
+  .glass-bar {
+    background: rgb(14 35 56 / 0.45);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: 9999px;
+    color: #fff;
+  }
+  .bubble {
+    background: rgb(255 255 255 / 0.12);
+    border: 1px solid rgb(255 255 255 / 0.22);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-radius: 9999px;
+    color: #fff;
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass,
+    .glass-strong,
+    .glass-bar {
+    background: rgb(14 35 56 / 0.45);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: 9999px;
+    color: #fff;
+  }
+  .bubble {
+      background: rgb(14 35 56 / 0.85);
+    }
+  }
+
+  .btn-pill {
+    @apply inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 font-sans text-[0.72rem] font-medium uppercase tracking-eyebrow transition duration-300 ease-out;
+  }
+  .btn-pill .btn-dot {
+    @apply flex h-9 w-9 items-center justify-center rounded-full transition duration-300 ease-out;
+  }
+  .btn-pill .btn-arrow {
+    @apply transition duration-300 ease-out group-hover:translate-x-0.5 group-hover:-rotate-45;
+  }
+  .btn-champagne {
+    @apply bg-champagne text-navy hover:bg-white;
+  }
+  .btn-champagne .btn-dot {
+    @apply bg-navy text-champagne;
+  }
+  .btn-white {
+    @apply bg-white text-navy hover:bg-champagne;
+  }
+  .btn-white .btn-dot {
+    @apply bg-navy text-white;
+  }
+  .btn-navy {
+    @apply bg-navy text-white hover:bg-ocean;
+  }
+  .btn-navy .btn-dot {
+    @apply bg-champagne text-navy;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-2 border-b border-current pb-1 font-sans text-[0.72rem] font-medium uppercase tracking-eyebrow transition-opacity duration-200 hover:opacity-70;
+  }
+
+  .round-btn {
+    @apply flex h-12 w-12 items-center justify-center rounded-full border border-navy/30 text-navy transition duration-200 hover:border-navy hover:bg-navy hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-navy;
+  }
+
+  .icon-ring {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full border;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Entrada discreta ao rolar. O hook só esconde o que está abaixo da dobra. */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.will-reveal.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.fade-up-1 {
+  animation-delay: 0.1s;
+}
+.fade-up-2 {
+  animation-delay: 0.22s;
+}
+.fade-up-3 {
+  animation-delay: 0.34s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+  .will-reveal,
+  .will-reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn-pill .btn-arrow {
+    transition: none;
+  }
+}

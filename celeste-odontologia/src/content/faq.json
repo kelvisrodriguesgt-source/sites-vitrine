@@ -1,0 +1,9 @@
+{
+  "faq": [
+    { "q": "Como agendo uma avaliação?", "a": "Pelo botão de WhatsApp do site. Você escolhe um horário com a equipe e recebe a confirmação por mensagem." },
+    { "q": "Preciso levar algum exame?", "a": "Se você já tem exames ou radiografias recentes, leve. Se não tiver, a equipe orienta o que for necessário na avaliação." },
+    { "q": "Quanto tempo dura a primeira consulta?", "a": "Depende do caso. A avaliação é feita com calma, e a equipe informa a duração estimada ao agendar." },
+    { "q": "Como funciona o pagamento?", "a": "As condições são explicadas pela equipe após a avaliação e o plano de tratamento. Pergunte pelo WhatsApp." },
+    { "q": "A clínica atende crianças?", "a": "Esta informação deve ser confirmada diretamente com a equipe. Chame pelo WhatsApp para saber mais." }
+  ]
+}

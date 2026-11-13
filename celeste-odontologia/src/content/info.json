@@ -1,0 +1,63 @@
+{
+  "brand": {
+    "name": "Celeste Odontologia",
+    "segment": "Odontologia",
+    "tagline": "Cuidado, estética e tecnologia para o seu bem-estar, hoje e amanhã.",
+    "demo": true,
+    "demoNote": "Site demonstrativo — Grupo KR. Nome, contatos e dados são fictícios."
+  },
+  "contact": {
+    "whatsapp": "5500999990000",
+    "whatsappDisplay": "(00) 99999-0000",
+    "phone": "(00) 3000-0000",
+    "phoneTel": "+550030000000",
+    "instagramHandle": "@celesteodontologia.demo",
+    "instagramUrl": "https://www.instagram.com/",
+    "greeting": "Olá! Vim pelo site da Celeste Odontologia e gostaria de agendar uma avaliação.",
+    "treatmentGreeting": "Olá! Vim pelo site da Celeste Odontologia e gostaria de saber mais sobre {tratamento}."
+  },
+  "address": {
+    "street": "Av. das Acácias, 1200, sala 405",
+    "district": "Centro",
+    "city": "Cidade Exemplo",
+    "state": "MT",
+    "postalCode": "00000-000",
+    "mapEmbedSrc": "",
+    "directionsUrl": ""
+  },
+  "hours": [
+    {
+      "label": "Segunda a sexta",
+      "time": "8h às 18h",
+      "days": "Monday,Tuesday,Wednesday,Thursday,Friday",
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "label": "Sábado",
+      "time": "8h às 12h",
+      "days": "Saturday",
+      "opens": "08:00",
+      "closes": "12:00"
+    },
+    {
+      "label": "Domingo",
+      "time": "Fechado",
+      "days": "",
+      "opens": "",
+      "closes": ""
+    }
+  ],
+  "images": {
+    "hero": "/img/hero.webp",
+    "heroAlt": "Ambiente da Celeste Odontologia com iluminação suave e acabamento em tons de azul",
+    "heroMobile": "/img/hero-mobile.webp",
+    "reception": "/img/recepcao.webp",
+    "receptionAlt": "Recepção da Celeste Odontologia",
+    "clinicRoom": "/img/consultorio.webp",
+    "clinicRoomAlt": "Consultório moderno e confortável da Celeste Odontologia",
+    "technology": "/img/tecnologia.webp",
+    "technologyAlt": "Equipamento digital de diagnóstico odontológico",
+    "ctaFinal": "/img/cta-final.webp"
+  }
+}

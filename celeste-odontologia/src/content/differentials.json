@@ -1,0 +1,22 @@
+{
+  "differentials": [
+    { "icon": "cpu", "title": "Tecnologia avançada", "text": "Recursos digitais para planejar e acompanhar cada etapa com clareza." },
+    { "icon": "users", "title": "Equipe especializada", "text": "Profissionais de diferentes áreas, com atendimento individual." },
+    { "icon": "heart", "title": "Ambiente acolhedor", "text": "Espaço tranquilo, pensado para o seu conforto do início ao fim." }
+  ],
+  "highlights": [
+    { "value": "+10", "label": "anos de experiência" },
+    { "value": "4", "label": "áreas de tratamento" },
+    { "value": "Hora marcada", "label": "atendimento com agendamento pelo WhatsApp" }
+  ],
+  "technology": [
+    { "id": "scanner", "icon": "scan", "title": "Scanner intraoral", "text": "Imagens digitais da boca, sem a necessidade de moldagem tradicional em muitos casos." },
+    { "id": "raio-x", "icon": "xray", "title": "Raio-X digital", "text": "Exames de imagem com visualização imediata, para apoiar o diagnóstico." },
+    { "id": "planejamento", "icon": "smile", "title": "Planejamento digital do sorriso", "text": "Simulação do plano de tratamento para você entender cada etapa antes de começar." }
+  ],
+  "steps": [
+    { "title": "Primeiro contato", "text": "Você chama pelo WhatsApp e escolhe um horário para a avaliação." },
+    { "title": "Avaliação individual", "text": "Conversamos, avaliamos e explicamos as opções de tratamento com clareza." },
+    { "title": "Plano e acompanhamento", "text": "Seguimos o plano combinado, com acompanhamento a cada etapa." }
+  ]
+}

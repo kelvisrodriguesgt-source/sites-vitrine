@@ -1,0 +1,56 @@
+{
+  "header": { "cta": "Agendar avaliação" },
+  "hero": {
+    "eyebrow": "01 ——— Estética · Saúde · Prevenção",
+    "title": "Mais que *um sorriso.*",
+    "srTitle": "Clínica odontológica em Cidade Exemplo",
+    "subtitle": "Cuidado, estética e tecnologia para o seu bem-estar, hoje e amanhã.",
+    "primary": "Agendar avaliação",
+    "secondary": "Conhecer a clínica",
+    "bubble": "Um cuidado personalizado para cada sorriso.",
+    "videoLabel": "Conheça a clínica",
+    "videoPlaceholder": "vídeo do cliente aqui"
+  },
+  "treatments": {
+    "eyebrow": "02 ——— Tratamentos",
+    "title": "Cuidado completo, *do preventivo ao estético.*",
+    "subtitle": "Cada plano nasce de uma avaliação individual, feita com calma e explicada com clareza.",
+    "allCta": "Todos os tratamentos",
+    "cardCta": "Saber mais sobre"
+  },
+  "clinic": {
+    "eyebrow": "03 ——— A clínica",
+    "title": "Um espaço pensado para você se sentir bem.",
+    "quote": "*Cuidado, tecnologia, pessoas.*",
+    "roomCaption": "Ambientes modernos e confortáveis"
+  },
+  "highlights": {
+    "ctaTitle": "Agende sua avaliação",
+    "ctaText": "Converse com a equipe pelo WhatsApp e escolha o melhor horário.",
+    "ctaButton": "Agendar avaliação"
+  },
+  "technology": {
+    "eyebrow": "05 ——— Tecnologia",
+    "title": "Tecnologia a favor *do seu conforto.*",
+    "subtitle": "Recursos digitais ajudam a planejar com precisão e a explicar cada etapa do tratamento."
+  },
+  "team": {
+    "eyebrow": "06 ——— Equipe",
+    "title": "Profissionais que *cuidam de perto.*",
+    "subtitle": "Equipe multidisciplinar, com atendimento individual e acompanhamento em cada etapa."
+  },
+  "steps": { "eyebrow": "07 ——— Como funciona", "title": "Do primeiro contato *ao acompanhamento.*" },
+  "faq": { "eyebrow": "08 ——— Dúvidas frequentes", "title": "Perguntas *frequentes.*" },
+  "contact": {
+    "eyebrow": "09 ——— Contato",
+    "title": "Venha nos *conhecer.*",
+    "subtitle": "Atendimento com hora marcada. Fale com a gente pelo WhatsApp ou por telefone.",
+    "mapPlaceholder": "Mapa da localização"
+  },
+  "finalCta": {
+    "title": "Seu novo sorriso *começa com uma conversa.*",
+    "text": "Envie uma mensagem e agende uma avaliação no horário que for melhor para você.",
+    "button": "Agendar pelo WhatsApp"
+  },
+  "seoIntro": "Clínica odontológica com atendimento personalizado, tecnologia digital e foco em estética, saúde e prevenção."
+}

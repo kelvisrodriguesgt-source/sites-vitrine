@@ -1,0 +1,22 @@
+{
+  "team": [
+    {
+      "name": "Dra. Helena Duarte",
+      "specialty": "Estética dental e dentística",
+      "cro": "",
+      "bio": "Atuação em estética dental, com plano individual para cada paciente."
+    },
+    {
+      "name": "Dr. Rafael Moura",
+      "specialty": "Implantodontia",
+      "cro": "",
+      "bio": "Atuação em reabilitação oral, com planejamento digital e acompanhamento."
+    },
+    {
+      "name": "Dra. Beatriz Lemos",
+      "specialty": "Ortodontia",
+      "cro": "",
+      "bio": "Atuação em alinhamento dental, com acompanhamento a cada etapa."
+    }
+  ]
+}

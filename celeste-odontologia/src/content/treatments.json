@@ -1,0 +1,32 @@
+{
+  "treatments": [
+    {
+      "id": "estetica-dental",
+      "title": "Estética dental",
+      "items": ["Clareamento dental", "Facetas e lentes de contato", "Restaurações estéticas"],
+      "image": "/img/estetica.webp",
+      "imageAlt": "Cuidado com a estética do sorriso"
+    },
+    {
+      "id": "implantes",
+      "title": "Implantes",
+      "items": ["Avaliação e planejamento digital", "Reabilitação com implantes", "Acompanhamento pós-tratamento"],
+      "image": "/img/implantes.webp",
+      "imageAlt": "Planejamento de tratamento com implantes dentários"
+    },
+    {
+      "id": "ortodontia",
+      "title": "Ortodontia",
+      "items": ["Aparelhos fixos", "Alinhadores transparentes", "Contenção e acompanhamento"],
+      "image": "/img/ortodontia.webp",
+      "imageAlt": "Tratamento ortodôntico para alinhamento dos dentes"
+    },
+    {
+      "id": "prevencao",
+      "title": "Prevenção",
+      "items": ["Check-up e limpeza", "Orientação de higiene", "Acompanhamento periódico"],
+      "image": "/img/prevencao.webp",
+      "imageAlt": "Atendimento preventivo e de rotina"
+    }
+  ]
+}
