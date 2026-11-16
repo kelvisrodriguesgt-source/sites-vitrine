@@ -65,6 +65,11 @@ def main() -> int:
         with Image.open(path) as im:
             im = ImageOps.exif_transpose(im).convert("RGB")
             size = TARGETS[name]
+            # Não amplia: se a foto original for menor que o alvo, mantém o tamanho dela (na proporção do espaço).
+            ratio = size[0] / size[1]
+            crop_w = min(im.width, int(im.height * ratio))
+            crop_h = int(crop_w / ratio)
+            size = (min(size[0], crop_w), min(size[1], crop_h))
             fitted = ImageOps.fit(im, size, method=Image.LANCZOS, centering=(0.5, 0.5))
             kb = save_small(fitted, OUT / f"{name}.webp") // 1024
         done.append(f"{name}.webp ({size[0]}x{size[1]}, {kb} KB)")
