@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-offwhite font-sans text-cocoa antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-taupe ring-offset-2 ring-offset-offwhite;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .section-y {
+    @apply py-20 sm:py-28;
+  }
+  /* Títulos principais: Cormorant Garamond em caixa-alta */
+  .title-main {
+    @apply font-display font-medium uppercase leading-[1.05] tracking-[0.03em];
+  }
+  .eyebrow {
+    @apply font-sans text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-taupe;
+  }
+  .rule {
+    @apply mx-auto block h-px w-14 bg-champagne;
+  }
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 py-3 font-ui text-[0.78rem] font-semibold uppercase tracking-[0.16em] transition duration-300 ease-out hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-dark {
+    @apply bg-cocoa text-offwhite hover:bg-taupe;
+  }
+  .btn-light {
+    @apply bg-offwhite text-cocoa hover:bg-nude;
+  }
+  .btn-outline {
+    @apply border border-taupe/50 bg-transparent text-cocoa hover:border-cocoa hover:bg-cocoa/5;
+  }
+  .btn-outline-light {
+    @apply border border-offwhite/50 bg-transparent text-offwhite hover:border-offwhite hover:bg-offwhite/10;
+  }
+  .btn-whats {
+    @apply bg-[#1d6f46] text-white hover:bg-[#165a38];
+  }
+  .field {
+    @apply mt-2 block min-h-12 w-full rounded-xl border border-champagne/60 bg-white px-4 py-3 font-sans text-base text-cocoa placeholder:text-taupe/60 focus:border-taupe focus:outline-none focus:ring-2 focus:ring-taupe/40;
+  }
+  .field-error {
+    @apply border-[#9b3a2e] focus:border-[#9b3a2e] focus:ring-[#9b3a2e]/30;
+  }
+}
+
+/* Entrada discreta ao rolar. O hook só esconde o que está abaixo da dobra. */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.will-reveal.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-in {
+  animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
